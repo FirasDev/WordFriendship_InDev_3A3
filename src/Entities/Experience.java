@@ -21,16 +21,16 @@ public class Experience {
     private String desc_exp;
     private Date date_exp;
     private float eval_exp;
+    private int id_pays;
     
-    public Experience(int id_experience, String Titre_exp,String type_exp,String desc_exp,Date date_exp,float eval_exp){
+    public Experience(String Titre_exp,String type_exp,String desc_exp,Date date_exp,float eval_exp,int id_pays){
     
-        this.id_experience = id_experience;
         this.Titre_exp = Titre_exp;
         this.type_exp = type_exp;
         this.desc_exp = desc_exp;
         this.date_exp = date_exp;
         this.eval_exp = eval_exp;
-        
+        this.id_pays = id_pays; 
     }
 
     public int getId_experience() {
@@ -80,6 +80,13 @@ public class Experience {
     public void setEval_exp(float eval_exp) {
         this.eval_exp = eval_exp;
     }
-    
+
+    public int getId_pays() {
+        return id_pays;
+    }
+
+    public void setId_pays(int id_pays) {
+        this.id_pays = id_pays;
+    }
     
 }

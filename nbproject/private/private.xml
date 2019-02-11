@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Firas/Documents/NetBeansProjects/wordfriendship_desktop/src/Services/BlogCrud.java</file>
-            <file>file:/C:/Users/Firas/Documents/NetBeansProjects/wordfriendship_desktop/src/Entities/Event.java</file>
-            <file>file:/C:/Users/Firas/Documents/NetBeansProjects/wordfriendship_desktop/src/Entities/Logement.java</file>
-            <file>file:/C:/Users/Firas/Documents/NetBeansProjects/wordfriendship_desktop/src/Services/ExperienceCrud.java</file>
-            <file>file:/C:/Users/Firas/Documents/NetBeansProjects/wordfriendship_desktop/src/Services/TravelbuddyCrud.java</file>
-            <file>file:/C:/Users/Firas/Documents/NetBeansProjects/wordfriendship_desktop/src/Services/UserCrud.java</file>
-            <file>file:/C:/Users/Firas/Documents/NetBeansProjects/wordfriendship_desktop/src/Services/LogementCrud.java</file>
-            <file>file:/C:/Users/Firas/Documents/NetBeansProjects/wordfriendship_desktop/src/Utils/MyDBcon.java</file>
-            <file>file:/C:/Users/Firas/Documents/NetBeansProjects/wordfriendship_desktop/src/Entities/Blog.java</file>
-            <file>file:/C:/Users/Firas/Documents/NetBeansProjects/wordfriendship_desktop/src/Entities/User.java</file>
-            <file>file:/C:/Users/Firas/Documents/NetBeansProjects/wordfriendship_desktop/src/Services/EventCrud.java</file>
-            <file>file:/C:/Users/Firas/Documents/NetBeansProjects/wordfriendship_desktop/src/Entities/Travelbuddy.java</file>
-            <file>file:/C:/Users/Firas/Documents/NetBeansProjects/wordfriendship_desktop/src/Entities/Experience.java</file>
+            <file>file:/C:/Users/Firas/Documents/NetBeansProjects/WordFriendship_InDev_3A3/src/Services/ExperienceCrud.java</file>
+            <file>file:/C:/Users/Firas/Documents/NetBeansProjects/WordFriendship_InDev_3A3/src/wordfriendship_desktop/Wordfriendship_desktop.java</file>
+            <file>file:/C:/Users/Firas/Documents/NetBeansProjects/WordFriendship_InDev_3A3/src/Utils/MyDBcon.java</file>
+            <file>file:/C:/Users/Firas/Documents/NetBeansProjects/WordFriendship_InDev_3A3/src/Entities/Experience.java</file>
         </group>
     </open-files>
 </project-private>

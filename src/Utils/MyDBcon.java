@@ -7,7 +7,6 @@ package Utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLDataException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,16 +17,18 @@ import java.util.logging.Logger;
  */
 public class MyDBcon {
 
-    private Connection con;
     private static MyDBcon instance;
-    final String url = "jdbc:mysql://localhost:3306/wordfriendship";
-    final String user = "root";
-    final String pass = "root";
+    private Connection con;
 
-    private MyDBcon() throws SQLException {
+    final String url = "jdbc:mysql://127.0.0.1/wordfriendship";
+    final String login = "root";
+    final String password = "";
+
+    private MyDBcon() {
         try {
-            con = DriverManager.getConnection(url, user, pass);
-        } catch (SQLDataException ex) {
+            con = DriverManager.getConnection(url, login, password);
+            System.out.println("connexion établie!!!!");
+        } catch (SQLException ex) {
             Logger.getLogger(MyDBcon.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

@@ -3,17 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Lenovo/Desktop/Pi/WordFriendship_InDev_3A3/src/Services/UserCrud.java</file>
-            <file>file:/C:/Users/Lenovo/Desktop/Pi/WordFriendship_InDev_3A3/src/Services/TravelbuddyCrud.java</file>
-            <file>file:/C:/Users/Lenovo/Desktop/Pi/WordFriendship_InDev_3A3/src/Entities/TravelGroup.java</file>
-            <file>file:/C:/Users/Lenovo/Desktop/Pi/WordFriendship_InDev_3A3/src/Entities/Experience.java</file>
-            <file>file:/C:/Users/Lenovo/Desktop/Pi/WordFriendship_InDev_3A3/src/Utils/MyDBcon.java</file>
-            <file>file:/C:/Users/Lenovo/Desktop/Pi/WordFriendship_InDev_3A3/src/Entities/Travelbuddy.java</file>
-            <file>file:/C:/Users/Lenovo/Desktop/Pi/WordFriendship_InDev_3A3/src/Services/TravelGroupCrud.java</file>
-            <file>file:/C:/Users/Lenovo/Desktop/Pi/WordFriendship_InDev_3A3/src/Services/EventCrud.java</file>
-            <file>file:/C:/Users/Lenovo/Desktop/Pi/WordFriendship_InDev_3A3/src/wordfriendship_desktop/Wordfriendship_desktop.java</file>
-            <file>file:/C:/Users/Lenovo/Desktop/Pi/WordFriendship_InDev_3A3/src/Services/ExperienceCrud.java</file>
-            <file>file:/C:/Users/Lenovo/Desktop/Pi/WordFriendship_InDev_3A3/src/Services/LogementCrud.java</file>
+            <file>file:/C:/Users/Firqs/Desktop/Workspace/pidev/WordFriendship_InDev_3A3/src/Services/TravelbuddyCrud.java</file>
+            <file>file:/C:/Users/Firqs/Desktop/Workspace/pidev/WordFriendship_InDev_3A3/src/Entities/Travelbuddy.java</file>
+            <file>file:/C:/Users/Firqs/Desktop/Workspace/pidev/WordFriendship_InDev_3A3/src/Services/ExperienceCrud.java</file>
+            <file>file:/C:/Users/Firqs/Desktop/Workspace/pidev/WordFriendship_InDev_3A3/src/Entities/Experience.java</file>
         </group>
     </open-files>
 </project-private>

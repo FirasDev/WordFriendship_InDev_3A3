@@ -9,6 +9,7 @@ import Utils.MyDBcon;
 import java.sql.Connection;
 import java.sql.SQLException;
 import Entities.Experience;
+import Entities.User;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -193,4 +194,14 @@ public class ExperienceCrud {
 			Logger.getLogger(Experience.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
+        
+        public static void ReturnFavExperience(User user, char c) throws SQLException{
+            
+            Connection con = MyDBcon.getInstance().getCon();
+            
+            String query ="Select e.* from `experience` e `fav_experience` f WHERE id_user = f.id_user and f.id_experience = e.id_experience ";
+            
+            
+            
+        }
 }

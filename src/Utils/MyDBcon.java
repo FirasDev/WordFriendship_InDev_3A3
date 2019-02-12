@@ -16,7 +16,7 @@ public class MyDBcon {
 
     private Connection con;
     private static MyDBcon instance;
-    final String url = "jdbc:mysql://localhost:3306/wordfriendship";
+    final String url = "jdbc:mysql://127.0.0.1/wordfriendship";
     final String user = "root";
     final String pass = "";
 

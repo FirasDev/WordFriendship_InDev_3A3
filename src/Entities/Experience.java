@@ -88,5 +88,11 @@ public class Experience {
     public void setId_pays(int id_pays) {
         this.id_pays = id_pays;
     }
+
+    @Override
+    public String toString() {
+        return "Experience{" + "id_experience=" + id_experience + ", Titre_exp=" + Titre_exp + ", type_exp=" + type_exp + ", desc_exp=" + desc_exp + ", date_exp=" + date_exp + ", eval_exp=" + eval_exp + ", id_pays=" + id_pays + '}';
+    }
     
-}
+    }
+ 

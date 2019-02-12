@@ -25,8 +25,6 @@ import java.util.logging.Logger;
  */
 public class ExperienceCrud {
     
-    
-
     public static void InsertExperience(Experience experience) throws SQLException {
 
         Connection con = MyDBcon.getInstance().getCon();
@@ -50,6 +48,7 @@ public class ExperienceCrud {
         }
 
     }
+     
 
     public static List<Experience> DisplayExperiences() throws SQLException {
         Connection con = MyDBcon.getInstance().getCon();
@@ -75,6 +74,7 @@ public class ExperienceCrud {
         return null;
 
     }
+    
     public static void RemoveExperience(int id) throws SQLException {
         Connection con = MyDBcon.getInstance().getCon();
 
@@ -94,7 +94,7 @@ public class ExperienceCrud {
     public static int SearchPays(String pays) throws SQLException {
         Connection con = MyDBcon.getInstance().getCon();
 
-        String query = "SELECT id_pays from `pays` where 'name_pays' ==" + pays;
+        String query = "SELECT id from `country` WHERE 'name_pays' ==" + pays;
         try{
             
         Statement ste = con.createStatement();
@@ -118,7 +118,7 @@ public class ExperienceCrud {
         if (idpays == 0) {
             return null;
         }else {
-        String query = "Select * from `experience`,`pays` where id_pays= " + idpays;
+        String query = "SELECT * from `experience`,`country` WHERE id_pays= " + idpays;
         try{
             
         ResultSet set = ste.executeQuery(query);
@@ -202,6 +202,65 @@ public class ExperienceCrud {
             String query ="Select e.* from `experience` e `fav_experience` f WHERE id_user = f.id_user and f.id_experience = e.id_experience ";
             
             
-            
         }
+        
+     public static void InsertImageExperience(String url,int id) throws SQLException {
+
+        Connection con = MyDBcon.getInstance().getCon();
+
+        String query = "INSERT INTO `album_experience` (`Titre_exp`,`id_experience`) VALUES(?,?)";
+
+        try {
+            PreparedStatement ste = con.prepareStatement(query);
+            
+            ste.setString(1, url);
+            ste.setInt(2, id);
+            
+            ste.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ExperienceCrud.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+     
+     public static void DeleteImageExperience(int id,int id_image) throws SQLException {
+
+        Connection con = MyDBcon.getInstance().getCon();
+
+        String query = "DELETE FROM `album_experience` where id_experience=? AND id_album_experience=?";
+
+        try {
+            PreparedStatement ste = con.prepareStatement(query);
+            
+            ste.setInt(1, id);
+            ste.setInt(2, id_image);
+            
+            ste.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ExperienceCrud.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+     
+//     public static void ReturnImageExperience(String url,Experience experience) throws SQLException {
+//
+//        Connection con = MyDBcon.getInstance().getCon();
+//
+//        String query = "INSERT INTO `album_experience` (`Titre_exp`,`id_experience`) VALUES(?,?)";
+//
+//        try {
+//            PreparedStatement ste = con.prepareStatement(query);
+//            
+//            ste.setString(1, url);
+//            ste.setInt(2, experience.getId_experience());
+//            
+//            ste.executeUpdate();
+//
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ExperienceCrud.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//
+//    }
+     
 }

@@ -1,12 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Utils;
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLDataException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,18 +14,16 @@ import java.util.logging.Logger;
  */
 public class MyDBcon {
 
-    private static MyDBcon instance;
     private Connection con;
+    private static MyDBcon instance;
+    final String url = "jdbc:mysql://localhost:3306/wordfriendship";
+    final String user = "root";
+    final String pass = "";
 
-    final String url = "jdbc:mysql://127.0.0.1/wordfriendship";
-    final String login = "root";
-    final String password = "";
-
-    private MyDBcon() {
+    private MyDBcon() throws SQLException {
         try {
-            con = DriverManager.getConnection(url, login, password);
-            System.out.println("connexion établie!!!!");
-        } catch (SQLException ex) {
+            con = DriverManager.getConnection(url, user, pass);
+        } catch (SQLDataException ex) {
             Logger.getLogger(MyDBcon.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

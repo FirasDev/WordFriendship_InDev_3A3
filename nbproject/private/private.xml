@@ -3,10 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Jamila/Videos/WordFriendShip_InDev_Jamila/src/Services/UserCrud.java</file>
-            <file>file:/C:/Users/Jamila/Videos/WordFriendShip_InDev_Jamila/src/Services/ExperienceCrud.java</file>
-            <file>file:/C:/Users/Jamila/Videos/WordFriendShip_InDev_Jamila/src/Utils/MyDBcon.java</file>
-            <file>file:/C:/Users/Jamila/Videos/WordFriendShip_InDev_Jamila/src/Entities/User.java</file>
+            <file>file:/C:/Users/HP/Desktop/ESPRIT_Marwen/3ème%20année/2ème%20semestre/PIDEV/WordFriendship_InDev_3A3-master/src/Entities/BlogCommentaire.java</file>
+            <file>file:/C:/Users/HP/Desktop/ESPRIT_Marwen/3ème%20année/2ème%20semestre/PIDEV/WordFriendship_InDev_3A3-master/src/Services/BlogCommentaireCrud.java</file>
+            <file>file:/C:/Users/HP/Desktop/ESPRIT_Marwen/3ème%20année/2ème%20semestre/PIDEV/WordFriendship_InDev_3A3-master/src/Services/BlogCrud.java</file>
+            <file>file:/C:/Users/HP/Desktop/ESPRIT_Marwen/3ème%20année/2ème%20semestre/PIDEV/WordFriendship_InDev_3A3-master/src/Entities/BlogReponse.java</file>
+            <file>file:/C:/Users/HP/Desktop/ESPRIT_Marwen/3ème%20année/2ème%20semestre/PIDEV/WordFriendship_InDev_3A3-master/src/Entities/Blog.java</file>
+            <file>file:/C:/Users/HP/Desktop/ESPRIT_Marwen/3ème%20année/2ème%20semestre/PIDEV/WordFriendship_InDev_3A3-master/src/wordfriendship_desktop/Wordfriendship_desktop.java</file>
+            <file>file:/C:/Users/HP/Desktop/ESPRIT_Marwen/3ème%20année/2ème%20semestre/PIDEV/WordFriendship_InDev_3A3-master/src/Entities/BlogQuestion.java</file>
+            <file>file:/C:/Users/HP/Desktop/ESPRIT_Marwen/3ème%20année/2ème%20semestre/PIDEV/WordFriendship_InDev_3A3-master/src/Services/EventCrud.java</file>
+            <file>file:/C:/Users/HP/Desktop/ESPRIT_Marwen/3ème%20année/2ème%20semestre/PIDEV/WordFriendship_InDev_3A3-master/src/Services/BlogReponseCrud.java</file>
+            <file>file:/C:/Users/HP/Desktop/ESPRIT_Marwen/3ème%20année/2ème%20semestre/PIDEV/WordFriendship_InDev_3A3-master/src/Services/ExperienceCrud.java</file>
+            <file>file:/C:/Users/HP/Desktop/ESPRIT_Marwen/3ème%20année/2ème%20semestre/PIDEV/WordFriendship_InDev_3A3-master/src/Services/BlogQuestionCrud.java</file>
+            <file>file:/C:/Users/HP/Desktop/ESPRIT_Marwen/3ème%20année/2ème%20semestre/PIDEV/WordFriendship_InDev_3A3-master/src/Services/BlogIservice.java</file>
         </group>
     </open-files>
 </project-private>

@@ -54,8 +54,8 @@ public class ExperienceCrud {
         Connection con = MyDBcon.getInstance().getCon();
         List MyExperiences = new ArrayList<>();
 
-        try {
             String query = "SELECT * from `experience` ORDER BY 'eval_ex'";
+        try {
             Statement ste = con.createStatement();
             ResultSet set = ste.executeQuery(query);
 
@@ -195,13 +195,32 @@ public class ExperienceCrud {
 		}
 	}
         
-        public static void ReturnFavExperience(User user, char c) throws SQLException{
+        public static List<Experience> ReturnFavExperience(User user, char c) throws SQLException{
             
             Connection con = MyDBcon.getInstance().getCon();
             
             String query ="Select e.* from `experience` e `fav_experience` f WHERE id_user = f.id_user and f.id_experience = e.id_experience ";
             
             
+            List MyExperiences = new ArrayList<>();
+
+        try {
+            Statement ste = con.createStatement();
+            ResultSet set = ste.executeQuery(query);
+
+            while (set.next()) {
+
+                Experience exp = new Experience(set.getString("Titre_exp"), set.getString("type_exp"), set.getString("desc_exp"), set.getDate("date_exp"), set.getFloat("eval_exp"), set.getInt("id_pays"));
+
+                MyExperiences.add(exp);
+                return MyExperiences;
+            }
+
+            System.out.println(MyExperiences);
+        } catch (SQLException ex) {
+            Logger.getLogger(ExperienceCrud.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
         }
         
      public static void InsertImageExperience(String url,int id) throws SQLException {
@@ -262,5 +281,26 @@ public class ExperienceCrud {
 //        }
 //
 //    }
+     
+     public static void UserRatingExperience(int rating,Experience experience,int id_user) throws SQLException{
+         
+         Connection con = MyDBcon.getInstance().getCon();
+
+        String query = "INSERT INTO `user_rating_exp` (`rating`,`id_user`,`id_experience`) VALUES(?,?,?)";
+
+        try {
+            PreparedStatement ste = con.prepareStatement(query);
+            
+            ste.setInt(1, rating);
+            ste.setInt(2, id_user);
+            ste.setInt(3, experience.getId_experience());
+            
+            ste.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ExperienceCrud.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+     }
      
 }

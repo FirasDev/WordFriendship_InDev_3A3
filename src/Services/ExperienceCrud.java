@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -64,10 +65,10 @@ public class ExperienceCrud {
                 Experience exp = new Experience(set.getString("Titre_exp"), set.getString("type_exp"), set.getString("desc_exp"), set.getDate("date_exp"), set.getFloat("eval_exp"), set.getInt("id_pays"));
 
                 MyExperiences.add(exp);
-                return MyExperiences;
             }
+            
+                return MyExperiences;
 
-            System.out.println(MyExperiences);
         } catch (SQLException ex) {
             Logger.getLogger(ExperienceCrud.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -94,13 +95,13 @@ public class ExperienceCrud {
     public static int SearchPays(String pays) throws SQLException {
         Connection con = MyDBcon.getInstance().getCon();
 
-        String query = "SELECT id from `country` WHERE 'name_pays' ==" + pays;
+        String query = "SELECT id from `country` WHERE `name` ='"+pays+"'";
         try{
             
         Statement ste = con.createStatement();
         ResultSet result = ste.executeQuery(query);
-
-        return result.getInt("id_pays");
+        if (result.next())
+        {return result.getInt("id");}
         
         } catch (SQLException ex) {
             Logger.getLogger(Experience.class.getName()).log(Level.SEVERE, null, ex);
@@ -243,6 +244,17 @@ public class ExperienceCrud {
 
     }
      
+     public static boolean VerifExperienceLocation(Experience experience,String pays) throws SQLException{
+         Connection con = MyDBcon.getInstance().getCon();
+
+        long x = RechercherSelonPays(pays).stream().count();
+        if (x>0)
+        {return true;}
+        
+        return false;
+          
+     }
+     
      public static void DeleteImageExperience(int id,int id_image) throws SQLException {
 
         Connection con = MyDBcon.getInstance().getCon();
@@ -303,4 +315,44 @@ public class ExperienceCrud {
          
      }
      
+     public static void InsertCommentExperience(String comment,Experience experience,int id_user) throws SQLException{
+         
+         Connection con = MyDBcon.getInstance().getCon();
+
+        String query = "INSERT INTO `comm_exp` (`comment`,`id_exp`,`id_user`) VALUES(?,?,?)";
+
+        try {
+            PreparedStatement ste = con.prepareStatement(query);
+            
+            ste.setString(1, comment);
+            ste.setInt(2, experience.getId_experience());
+            ste.setInt(3, id_user);
+            
+            ste.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ExperienceCrud.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+     }
+     
+     public static void DeleteCommentExperience(Experience experience,int id_user) throws SQLException{
+         
+         Connection con = MyDBcon.getInstance().getCon();
+
+        String query = "Delete from `comm_exp` WHERE (`id_user` = ? AND `id_exp` = ?)";
+
+        try {
+            PreparedStatement ste = con.prepareStatement(query);
+            
+            ste.setInt(1, id_user);
+            ste.setInt(2, experience.getId_experience());
+            
+            ste.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ExperienceCrud.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+     }
 }

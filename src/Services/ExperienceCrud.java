@@ -55,7 +55,7 @@ public class ExperienceCrud {
         Connection con = MyDBcon.getInstance().getCon();
         List MyExperiences = new ArrayList<>();
 
-            String query = "SELECT * from `experience` ORDER BY 'eval_ex'";
+            String query = "SELECT * from `experience`";
         try {
             Statement ste = con.createStatement();
             ResultSet set = ste.executeQuery(query);

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="AdviceWindow" prefHeight="545.0" prefWidth="1069.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AddExperienceController">
+    <stylesheets>
+        <URL value="@addexperience.css" />
+    </stylesheets>
+   <children>
+      <BorderPane prefHeight="545.0" prefWidth="1069.0">
+         <left>
+            <Pane prefHeight="545.0" prefWidth="334.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+               <children>
+                  <ImageView fitHeight="489.0" fitWidth="321.0" layoutX="14.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Assets/experience_banner.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Pane>
+         </left>
+         <center>
+            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label text="Créez votre expérience sur Amiticia">
+                     <font>
+                        <Font size="39.0" />
+                     </font>
+                     <padding>
+                        <Insets left="60.0" top="10.0" />
+                     </padding>
+                  </Label>
+                  <Label layoutX="1.0" layoutY="6.0" text="Bonjour,">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets left="60.0" top="50.0" />
+                     </padding>
+                  </Label>
+                  <Label layoutX="1.0" layoutY="44.0" text="Nous sommes impatients de découvrir l'expérience que vous voulez partager sur Amiticia.">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets left="60.0" top="50.0" />
+                     </padding>
+                  </Label>
+                  <Label layoutX="-15.0" layoutY="69.0" text="Voici la procédure :">
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                     <padding>
+                        <Insets left="60.0" top="50.0" />
+                     </padding>
+                  </Label>
+                  <ImageView fitHeight="126.0" fitWidth="74.0" layoutX="89.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Assets/selfie.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="93.0" fitWidth="93.0" layoutX="74.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Assets/experience.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="94.0" fitWidth="64.0" layoutX="88.0" layoutY="391.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Assets/moderator.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="128.0" layoutY="135.0" prefHeight="136.0" prefWidth="543.0" text="Ajoutez des photos, descriptions et autres détails qui seront vérifiés&#10;par un modérateur.">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets left="60.0" top="50.0" />
+                     </padding>
+                  </Label>
+                  <Label layoutX="126.0" layoutY="260.0" prefHeight="100.0" prefWidth="544.0" text="Découvrez ce qui rend chaque expérience unique et ce qu'Amiticia&#10;attend d'une expérience.">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets left="60.0" top="50.0" />
+                     </padding>
+                  </Label>
+                  <Label layoutX="126.0" layoutY="353.0" prefHeight="100.0" prefWidth="578.0" text="Un modérateur va examiner votre page d'expérience. Si votre expérience&#10;répond à nos critères de qualité.">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets left="60.0" top="50.0" />
+                     </padding>
+                  </Label>
+                  <JFXButton layoutX="313.0" layoutY="475.0" onMouseClicked="#Understood" text="J'ai compris">
+                     <font>
+                        <Font size="26.0" />
+                     </font></JFXButton>
+               </children>
+            </Pane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

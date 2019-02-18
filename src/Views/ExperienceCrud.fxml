@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" fx:id="ExperienceWindow" prefHeight="545.0" prefWidth="1069.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ExperienceCrudController">
+    <stylesheets>
+        <URL value="@experiencecrud.css" />
+    </stylesheets>
+   <children>
+      <BorderPane layoutY="9.0" prefHeight="536.0" prefWidth="1069.0">
+         <top>
+            <Pane prefHeight="51.0" prefWidth="1012.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox prefHeight="60.0" prefWidth="1012.0">
+                     <children>
+                        <JFXButton onMouseClicked="#Experienceinfo" text="Ajouter une experience">
+                           <HBox.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                        <JFXButton layoutX="20.0" layoutY="20.0" onMouseClicked="#DeleteExperience" text="Supprimer une experience">
+                           <HBox.margin>
+                              <Insets left="5.0" top="10.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                        <JFXButton layoutX="194.0" layoutY="20.0" onMouseClicked="#UpdateExperience" text="Modifier une experience">
+                           <HBox.margin>
+                              <Insets left="5.0" top="10.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                        <JFXButton layoutX="388.0" layoutY="10.0" text="Actualiser">
+                           <HBox.margin>
+                              <Insets left="5.0" top="10.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+               </children>
+            </Pane>
+         </top>
+         <bottom>
+            <Pane prefHeight="20.0" prefWidth="1012.0" BorderPane.alignment="CENTER" />
+         </bottom>
+         <center>
+            <TableView prefHeight="461.0" prefWidth="1042.0" BorderPane.alignment="CENTER">
+              <columns>
+                <TableColumn fx:id="id" prefWidth="49.0" text="Id" />
+                <TableColumn fx:id="titre" prefWidth="183.0" text="Titre Experience" />
+                  <TableColumn fx:id="type" prefWidth="114.0" text="Type" />
+                  <TableColumn fx:id="desc" prefWidth="212.0" text="Description" />
+                  <TableColumn fx:id="dadte" minWidth="0.0" prefWidth="110.0" text="Date" />
+                  <TableColumn fx:id="eval" prefWidth="103.0" text="Evaluation" />
+                  <TableColumn fx:id="pays" prefWidth="122.0" text="Pays" />
+                  <TableColumn fx:id="user" prefWidth="118.0" text="User" />
+              </columns>
+            </TableView>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

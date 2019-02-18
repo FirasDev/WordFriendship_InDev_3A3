@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="AddExperienceWindow" prefHeight="545.0" prefWidth="1069.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AddExperience2Controller">
+    <stylesheets>
+        <URL value="@addexperience2.css" />
+    </stylesheets>
+   <children>
+      <BorderPane prefHeight="545.0" prefWidth="1069.0">
+         <top>
+            <Pane prefHeight="64.0" prefWidth="1069.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="364.0" layoutY="7.0" text="Créez votre expérience">
+                     <font>
+                        <Font size="34.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </top>
+         <center>
+            <Pane prefHeight="482.0" prefWidth="1069.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox layoutX="126.0" layoutY="64.0" prefHeight="244.0" prefWidth="241.0">
+                     <children>
+                        <JFXTextField promptText="Titre" />
+                        <JFXComboBox prefHeight="43.0" prefWidth="249.0" promptText="Type d'experience">
+                           <VBox.margin>
+                              <Insets top="60.0" />
+                           </VBox.margin>
+                        </JFXComboBox>
+                        <JFXTextArea prefHeight="87.0" prefWidth="241.0" promptText="Description">
+                           <VBox.margin>
+                              <Insets top="50.0" />
+                           </VBox.margin>
+                        </JFXTextArea>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="694.0" layoutY="64.0" prefHeight="145.0" prefWidth="241.0">
+                     <children>
+                        <DatePicker prefHeight="41.0" prefWidth="244.0" promptText="Date de l'experience" />
+                        <JFXComboBox prefHeight="37.0" prefWidth="247.0" promptText="Pays">
+                           <VBox.margin>
+                              <Insets top="45.0" />
+                           </VBox.margin>
+                        </JFXComboBox>
+                     </children>
+                  </VBox>
+                  <JFXTextField layoutX="694.0" layoutY="268.0" prefHeight="40.0" prefWidth="98.0" promptText="Image" />
+                  <JFXButton layoutX="790.0" layoutY="273.0" prefHeight="31.0" prefWidth="145.0" text="Choisir une image" />
+                  <JFXButton layoutX="464.0" layoutY="374.0" onMouseClicked="#SubmitExperience" text="Enregistrer">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </Pane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

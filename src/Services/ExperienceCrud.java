@@ -62,17 +62,17 @@ public class ExperienceCrud {
 
             while (set.next()) {
 
-                Experience exp = new Experience(set.getString("Titre_exp"), set.getString("type_exp"), set.getString("desc_exp"), set.getDate("date_exp"), set.getFloat("eval_exp"), set.getInt("id_pays"));
+                Experience exp = new Experience(set.getInt("id_experience"),set.getString("Titre_exp"), set.getString("type_exp"), set.getString("desc_exp"), set.getDate("date_exp"), set.getFloat("eval_exp"));
 
                 MyExperiences.add(exp);
             }
-            
-                return MyExperiences;
-
+           
+               
+                   
         } catch (SQLException ex) {
             Logger.getLogger(ExperienceCrud.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
+        return MyExperiences;
 
     }
     

@@ -5,6 +5,9 @@
  */
 package wordfriendship_desktop;
 
+import Services.ExperienceCrud;
+import java.sql.SQLException;
+
 /**
  *
  * @author Firas
@@ -14,7 +17,9 @@ public class Wordfriendship_desktop {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
+        
+        ExperienceCrud.DisplayExperiences().stream().forEach(e->System.out.println(e));
         
     }
     

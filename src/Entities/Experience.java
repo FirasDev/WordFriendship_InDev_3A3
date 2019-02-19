@@ -22,6 +22,26 @@ public class Experience {
     private Date date_exp;
     private float eval_exp;
     private int id_pays;
+
+    
+    public Experience(String Titre_exp, String type_exp, String desc_exp, Date date_exp, float eval_exp) {
+        this.Titre_exp = Titre_exp;
+        this.type_exp = type_exp;
+        this.desc_exp = desc_exp;
+        this.date_exp = date_exp;
+        this.eval_exp = eval_exp;
+    }
+
+    public Experience(int id_experience, String Titre_exp, String type_exp, String desc_exp, Date date_exp, float eval_exp) {
+        this.id_experience = id_experience;
+        this.Titre_exp = Titre_exp;
+        this.type_exp = type_exp;
+        this.desc_exp = desc_exp;
+        this.date_exp = date_exp;
+        this.eval_exp = eval_exp;
+    }
+    
+    
     
     public Experience(String Titre_exp,String type_exp,String desc_exp,Date date_exp,float eval_exp,int id_pays){
     
@@ -91,8 +111,10 @@ public class Experience {
 
     @Override
     public String toString() {
-        return "Experience{" + "id_experience=" + id_experience + ", Titre_exp=" + Titre_exp + ", type_exp=" + type_exp + ", desc_exp=" + desc_exp + ", date_exp=" + date_exp + ", eval_exp=" + eval_exp + ", id_pays=" + id_pays + '}';
+        return "Experience{" + "Titre_exp=" + Titre_exp + '}';
     }
+
+    
     
     }
  

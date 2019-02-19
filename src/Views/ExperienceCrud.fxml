@@ -50,16 +50,13 @@
             <Pane prefHeight="20.0" prefWidth="1012.0" BorderPane.alignment="CENTER" />
          </bottom>
          <center>
-            <TableView prefHeight="461.0" prefWidth="1042.0" BorderPane.alignment="CENTER">
+            <TableView fx:id="table" prefHeight="461.0" prefWidth="1042.0" BorderPane.alignment="CENTER">
               <columns>
-                <TableColumn fx:id="id" prefWidth="49.0" text="Id" />
-                <TableColumn fx:id="titre" prefWidth="183.0" text="Titre Experience" />
-                  <TableColumn fx:id="type" prefWidth="114.0" text="Type" />
-                  <TableColumn fx:id="desc" prefWidth="212.0" text="Description" />
-                  <TableColumn fx:id="dadte" minWidth="0.0" prefWidth="110.0" text="Date" />
-                  <TableColumn fx:id="eval" prefWidth="103.0" text="Evaluation" />
-                  <TableColumn fx:id="pays" prefWidth="122.0" text="Pays" />
-                  <TableColumn fx:id="user" prefWidth="118.0" text="User" />
+                <TableColumn fx:id="Titre_exp" prefWidth="183.0" text="Titre Experience" />
+                  <TableColumn fx:id="type" prefWidth="183.0" text="Type d'experience" />
+                  <TableColumn fx:id="desc" prefWidth="183.0" text="Description" />
+                  <TableColumn fx:id="date" prefWidth="183.0" text="Date" />
+                  <TableColumn fx:id="eval" prefWidth="183.0" text="Evaluation" />
               </columns>
             </TableView>
          </center>

@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -109,5 +110,21 @@ public class UserCrud {
         }
     }
 
-    
+    public static TreeMap<String,Integer> GetNameIdMap() throws SQLException{
+		TreeMap<String,Integer> map = new TreeMap<String,Integer>();
+		Connection con = MyDBcon.getInstance().getCon();
+		String query = "SELECT id,username from user order by id";
+		try {
+			PreparedStatement ste = con.prepareStatement(query);
+			ResultSet set = ste.executeQuery();
+			while (set.next()) {
+				map.put(set.getString("username"), set.getInt("id"));
+			}
+			return map;
+		} catch (SQLException ex) {
+			Logger.getLogger(PaysCrud.class.getName()).log(Level.SEVERE, null, ex);
+
+		}
+		return null;
+	}
 }

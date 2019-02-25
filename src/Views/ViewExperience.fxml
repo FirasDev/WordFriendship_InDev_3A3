@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" fx:id="viewexperiencewindow" prefHeight="545.0" prefWidth="1069.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="Controllers.ViewExperienceController">
+    <stylesheets>
+        <URL value="@viewexperience.css" />
+    </stylesheets>
+   <children>
+      <BorderPane prefHeight="545.0" prefWidth="1069.0">
+         <top>
+            <Pane prefHeight="70.0" prefWidth="1069.0" BorderPane.alignment="CENTER">
+               <children>
+                  <JFXButton fx:id="back" layoutX="40.0" layoutY="22.0" text="Précédent" />
+                  <JFXButton fx:id="home" layoutX="149.0" layoutY="22.0" text="Accueil" />
+                  <JFXButton fx:id="album" layoutX="243.0" layoutY="22.0" text="Créer/Voir un album" />
+               </children>
+            </Pane>
+         </top>
+         <center>
+            <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="706.0" prefWidth="1068.0">
+                     <children>
+                        <Label fx:id="titre" layoutX="382.0" prefHeight="90.0" prefWidth="179.0" text="Label" />
+                        <Label fx:id="pays" layoutX="749.0" onMouseClicked="#CountryInfo" prefHeight="90.0" prefWidth="179.0" text="Label" />
+                        <Label fx:id="type" layoutX="383.0" layoutY="85.0" prefHeight="80.0" prefWidth="163.0" text="Label" />
+                        <Label fx:id="date" layoutX="382.0" layoutY="183.0" prefHeight="90.0" prefWidth="179.0" text="Label" />
+                        <ImageView fx:id="image" fitHeight="257.0" fitWidth="350.0" layoutX="329.0" layoutY="257.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="username" layoutX="45.0" layoutY="30.0" prefHeight="55.0" prefWidth="102.0" text="Label" />
+                        <JFXTextArea fx:id="desc" layoutX="193.0" layoutY="552.0" prefHeight="206.0" prefWidth="627.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

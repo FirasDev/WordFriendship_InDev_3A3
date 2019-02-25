@@ -11,12 +11,12 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane id="AnchorPane" fx:id="ExperienceWindow" prefHeight="545.0" prefWidth="1069.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ExperienceCrudController">
+<AnchorPane id="AnchorPane" fx:id="ExperienceWindow" prefHeight="545.0" prefWidth="1069.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="Controllers.ExperienceCrudAdminController">
     <stylesheets>
-        <URL value="@experiencecrud.css" />
+        <URL value="@experiencecrudadmin.css" />
     </stylesheets>
    <children>
-      <BorderPane layoutY="9.0" prefHeight="536.0" prefWidth="1069.0">
+      <BorderPane prefHeight="555.0" prefWidth="1079.0">
          <top>
             <Pane prefHeight="51.0" prefWidth="1012.0" BorderPane.alignment="CENTER">
                <children>
@@ -24,12 +24,7 @@
                      <children>
                         <JFXButton onMouseClicked="#Experienceinfo" text="Ajouter une experience">
                            <HBox.margin>
-                              <Insets left="10.0" top="10.0" />
-                           </HBox.margin>
-                        </JFXButton>
-                        <JFXButton layoutX="20.0" layoutY="20.0" onAction="#UpdateExperience" onMouseClicked="#Experienceinfo" text="Modifier une experience">
-                           <HBox.margin>
-                              <Insets left="5.0" top="10.0" />
+                              <Insets left="20.0" top="10.0" />
                            </HBox.margin>
                         </JFXButton>
                         <JFXButton fx:id="del" layoutX="20.0" layoutY="20.0" onMouseClicked="#DeleteExperience" text="Supprimer une experience">
@@ -57,14 +52,15 @@
          </bottom>
          <center>
             <TableView fx:id="table" prefHeight="465.0" prefWidth="846.0" BorderPane.alignment="CENTER">
-              <columns>
-                <TableColumn fx:id="Titre_exp" prefWidth="187.0" text="Titre Experience" />
+               <columns>
+                  <TableColumn fx:id="Titre_exp" prefWidth="187.0" text="Titre Experience" />
                   <TableColumn fx:id="type" prefWidth="153.0" text="Type d'experience" />
                   <TableColumn fx:id="desc" prefWidth="234.0" text="Description" />
                   <TableColumn fx:id="date" prefWidth="150.0" text="Date" />
                   <TableColumn fx:id="eval" prefWidth="104.0" text="Evaluation" />
                   <TableColumn fx:id="pays" prefWidth="131.0" text="Pays" />
-              </columns>
+                  <TableColumn fx:id="userfield" prefWidth="131.0" text="User" />
+               </columns>
             </TableView>
          </center>
       </BorderPane>

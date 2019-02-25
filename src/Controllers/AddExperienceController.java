@@ -35,7 +35,7 @@ public class AddExperienceController implements Initializable {
     @FXML
     private void Understood(MouseEvent event) throws IOException {
         
-        AnchorPane AddExperienceWindow = FXMLLoader.load(getClass().getResource("/views/AddExperience2.fxml"));
+        AnchorPane AddExperienceWindow = FXMLLoader.load(getClass().getResource("/Views/AddExperience2.fxml"));
         AdviceWindow.getChildren().setAll(AddExperienceWindow);
     }
     

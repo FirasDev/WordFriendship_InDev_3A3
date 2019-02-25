@@ -8,19 +8,15 @@ package Controllers;
 import Entities.Experience;
 import Services.ExperienceCrud;
 import Services.PaysCrud;
-import Utils.DateUtil;
+import Services.UserCrud;
 import Utils.MyDBcon;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
-import static com.sun.javafx.scene.control.skin.Utils.getResource;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -42,29 +38,19 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import javafx.util.Duration;
-import jdk.nashorn.internal.objects.NativeArray;
 import org.controlsfx.control.Notifications;
 
 /**
@@ -72,10 +58,15 @@ import org.controlsfx.control.Notifications;
  *
  * @author Firas
  */
-public class ExperienceCrudController implements Initializable {
+public class ExperienceCrudAdminController implements Initializable {
 
     @FXML
-    private AnchorPane ExperienceWindow;
+    private JFXButton del;
+    @FXML
+    private JFXTextField SearchField;
+    @FXML
+    private TableView<Experience> table;
+    private List<Integer> id_list;
     @FXML
     private TableColumn<Experience, Integer> id;
     @FXML
@@ -91,17 +82,14 @@ public class ExperienceCrudController implements Initializable {
     @FXML
     private TableColumn<Experience, String> pays;
     @FXML
-    private TableView<Experience> table;
-    private List<Integer> id_list;
+    private TableColumn<Experience, String> userfield;
     @FXML
-    private JFXTextField SearchField;
-    @FXML
-    private JFXButton del;
- 
+    private AnchorPane ExperienceWindow;
     private HashMap<String, Integer> map1;
     private TreeMap<String, Integer> map2;
+    private TreeMap<String, Integer> map3;
     private List<String > ExperienceList;
-      
+
       
       public void display() throws SQLException {
         Titre_exp.setCellValueFactory(new PropertyValueFactory<>("Titre_exp"));
@@ -110,7 +98,8 @@ public class ExperienceCrudController implements Initializable {
         date.setCellValueFactory(new PropertyValueFactory<>("date_exp"));
         eval.setCellValueFactory(new PropertyValueFactory<>("eval_exp"));
         pays.setCellValueFactory(new PropertyValueFactory<>("name_country"));
-	ObservableList<Experience> OL = FXCollections.observableList(ExperienceCrud.DisplayExperiencesById(2));
+        userfield.setCellValueFactory(new PropertyValueFactory<>("username"));
+	ObservableList<Experience> OL = FXCollections.observableList(ExperienceCrud.DisplayExperiences());
 	table.setItems(OL);
 	}
 
@@ -118,22 +107,23 @@ public class ExperienceCrudController implements Initializable {
 		map1 = ExperienceCrud.GetNameIdMap();
 		ExperienceList = ExperienceCrud.GetNamelist() ;
 		map2 = PaysCrud.GetNameIdMap();
+                map3 = UserCrud.GetNameIdMap();
 		//old -- ObservableList<String> teams = FXCollections.observableArrayList(map1.keySet());
 		ObservableList<String> teams = FXCollections.observableArrayList(ExperienceList);
 		System.out.println(map2);
 		ObservableList<String> country = FXCollections.observableArrayList(map2.keySet());
                 System.out.println(country);
-
+                ObservableList<String> users = FXCollections.observableArrayList(map3.keySet());
+                System.out.println(users);
 		Titre_exp.setCellFactory(TextFieldTableCell.<Experience>forTableColumn());
 		type.setCellFactory(TextFieldTableCell.<Experience>forTableColumn());
 		desc.setCellFactory(TextFieldTableCell.<Experience>forTableColumn());
-		pays.setCellFactory(ComboBoxTableCell.forTableColumn(country));
 //		image.setCellFactory(TextFieldTableCell.<Experience>forTableColumn());
 		// ------ //
 		Titre_exp.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Experience, String>>() {
 			@Override
 			public void handle(TableColumn.CellEditEvent<Experience, String> t) {
-				Alert alert = new Alert(AlertType.CONFIRMATION);
+				Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 				alert.setTitle("Fenêtre de confirmation");
 				alert.setContentText("Êtes-vous sûr de la modification ?");
 
@@ -171,7 +161,7 @@ public class ExperienceCrudController implements Initializable {
 		type.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Experience, String>>() {
 			@Override
 			public void handle(TableColumn.CellEditEvent<Experience, String> t) {
-				Alert alert = new Alert(AlertType.CONFIRMATION);
+				Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 				alert.setTitle("Fenêtre de confirmation");
 				alert.setContentText("Êtes-vous sûr de la modification ?");
 
@@ -188,7 +178,7 @@ public class ExperienceCrudController implements Initializable {
 				}
 					else 
 					{
-						((Experience) t.getTableView().getItems().get(t.getTablePosition().getRow())).setTitre_exp(t.getNewValue());
+						((Experience) t.getTableView().getItems().get(t.getTablePosition().getRow())).setType_exp(t.getNewValue());
                                             try {
                                                 ExperienceCrud.update("type_exp", t.getNewValue(), ((Experience) t.getTableView().getItems().get(t.getTablePosition().getRow())).getId_experience());
                                             } catch (SQLException ex) {
@@ -210,7 +200,7 @@ public class ExperienceCrudController implements Initializable {
 		desc.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Experience, String>>() {
 			@Override
 			public void handle(TableColumn.CellEditEvent<Experience, String> t) {
-				Alert alert = new Alert(AlertType.CONFIRMATION);
+				Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 				alert.setTitle("Fenêtre de confirmation");
 				alert.setContentText("Êtes-vous sûr de la modification ?");
 
@@ -227,7 +217,7 @@ public class ExperienceCrudController implements Initializable {
 				}
 					else 
 					{
-						((Experience) t.getTableView().getItems().get(t.getTablePosition().getRow())).setTitre_exp(t.getNewValue());
+						((Experience) t.getTableView().getItems().get(t.getTablePosition().getRow())).setDesc_exp(t.getNewValue());
                                             try {
                                                 ExperienceCrud.update("desc_exp", t.getNewValue(), ((Experience) t.getTableView().getItems().get(t.getTablePosition().getRow())).getId_experience());
                                             } catch (SQLException ex) {
@@ -246,12 +236,12 @@ public class ExperienceCrudController implements Initializable {
 			}
 		});
 
-                		pays.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Experience, String>>() {
+                pays.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Experience, String>>() {
 			@Override
 			public void handle(TableColumn.CellEditEvent<Experience, String> t) {
-				Alert alert = new Alert(AlertType.CONFIRMATION);
-				alert.setTitle("Confirmation Dialog");
-				alert.setContentText("Are you sure of your edition?");
+				Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+				alert.setTitle("Fenêtre de confirmation");
+				alert.setContentText("Êtes-vous sûr de la modification ?");
 
 				Optional<ButtonType> result = alert.showAndWait();
 				if (result.get() == ButtonType.OK) {
@@ -272,6 +262,7 @@ public class ExperienceCrudController implements Initializable {
 				}
 			}
 		});
+
                 
 //		image.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Experience, String>>() {
 //			@Override
@@ -306,11 +297,11 @@ public class ExperienceCrudController implements Initializable {
         try {
                     ArrayList<Experience> experiences = new ArrayList<>();
         try {
-            experiences=(ArrayList<Experience>) ExperienceCrud.DisplayExperiencesById(2);
+            experiences=(ArrayList<Experience>) ExperienceCrud.DisplayExperiences();
             Iterator<Experience> it = experiences.iterator();
             System.out.println(it.next());
             
-            id_list = ExperienceCrud.DisplayExperiencesById(2).stream().map(s -> s.getId_experience()).collect(Collectors.toList());
+            id_list = ExperienceCrud.DisplayExperiences().stream().map(s -> s.getId_experience()).collect(Collectors.toList());
             
             System.out.println(experiences);
             id_list = experiences.stream().map(s->s.getId_experience()).collect(Collectors.toList());
@@ -377,7 +368,6 @@ public class ExperienceCrudController implements Initializable {
             });
             return row;
         });
-
         display();
         update();
         } catch (SQLException ex ) {
@@ -428,7 +418,7 @@ public class ExperienceCrudController implements Initializable {
 		display();
 	}
         	void alert(String text) {
-		Alert alert = new Alert(AlertType.ERROR);
+		Alert alert = new Alert(Alert.AlertType.ERROR);
 		alert.setTitle("Error");
 		alert.setContentText(text);
 
@@ -451,7 +441,7 @@ public class ExperienceCrudController implements Initializable {
 
     } else {
         // Nothing selected.
-        Alert alert = new Alert(AlertType.WARNING);
+        Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("No Selection");
         alert.setHeaderText("No Person Selected");
         alert.setContentText("Please select a person in the table.");

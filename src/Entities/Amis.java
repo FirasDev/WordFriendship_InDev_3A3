@@ -31,6 +31,8 @@ public class Amis {
         this.id_ue=id_ue;
         this.id_ur=id_ur;
     }
+
+    
     
     public int getId_a() {
         return id_a;

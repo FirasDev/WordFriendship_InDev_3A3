@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" minHeight="-Infinity" prefHeight="545.0" prefWidth="1068.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.FXMLprofilAmisController">
+   <children>
+      <JFXButton fx:id="envoyer" layoutX="397.0" layoutY="464.0" text="Envoyer Invitation" />
+      <Label layoutX="255.0" layoutY="218.0" text="User name :" />
+      <Label layoutX="254.0" layoutY="278.0" text="First name :" />
+      <Label layoutX="254.0" layoutY="339.0" text="Last name :" />
+      <Label layoutX="255.0" layoutY="401.0" text="Nationalite" />
+      <JFXTextField fx:id="username" layoutX="344.0" layoutY="207.0" prefHeight="26.0" prefWidth="163.0" />
+      <JFXTextField fx:id="firstname" layoutX="344.0" layoutY="262.0" prefHeight="26.0" prefWidth="163.0" />
+      <JFXTextField fx:id="lastname" layoutX="344.0" layoutY="326.0" prefHeight="26.0" prefWidth="163.0" />
+      <JFXTextField fx:id="nationalite" layoutX="344.0" layoutY="389.0" prefHeight="26.0" prefWidth="163.0" />
+      <ImageView fitHeight="203.0" fitWidth="210.0" layoutX="3.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/couple_dashboard.png" />
+         </image>
+      </ImageView>
+      <JFXButton alignment="CENTER" contentDisplay="RIGHT" layoutX="63.0" layoutY="261.0" text="Utilisateurs" />
+      <JFXButton alignment="CENTER" contentDisplay="RIGHT" layoutX="63.0" layoutY="297.0" text="Expérience" />
+      <JFXButton alignment="CENTER" contentDisplay="RIGHT" layoutX="61.0" layoutY="329.0" text="Événements" />
+      <JFXButton alignment="CENTER" contentDisplay="RIGHT" layoutX="56.0" layoutY="363.0" text="Travel-Buddy" />
+      <JFXButton alignment="CENTER" contentDisplay="RIGHT" layoutX="66.0" layoutY="403.0" text="Nos Blog" textAlignment="CENTER" />
+      <JFXButton alignment="CENTER" contentDisplay="RIGHT" layoutX="63.0" layoutY="438.0" text="Logements" />
+      <ImageView fitHeight="103.0" fitWidth="463.0" layoutX="268.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/Amiticia.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

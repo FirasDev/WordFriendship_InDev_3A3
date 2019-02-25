@@ -6,15 +6,19 @@
 package Services;
 
 import Entities.Amis;
+import Entities.Sessions;
 import Utils.MyDBcon;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import Entities.User;
+import static Services.UserCrud.cnx;
 /**
  *
  * @author Jamila
@@ -29,39 +33,53 @@ static Connection cnx;
 
     }
 
-    public static void ajouterAmis(Amis a) {
+    public static void ajouterAmis(int a,int s) {
         try {
-
+   
+            
+            
             System.out.println("connexion établie");
             Statement stm = cnx.createStatement();
-            String req = "INSERT INTO `amis`( `id_ue`, `id_ur`) VALUES ('" + a.getId_ue() + "','" + a.getId_ur() + "')";
+            String req = "INSERT INTO `amis`( id_ue, `id_ur`) VALUES ('"+s+"','" +a+ "')";
             stm.executeUpdate(req);
         } catch (SQLException ex) {
             Logger.getLogger(UserCrud.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-   public static void supprimerAmis(int id_ue, int id_ur) {  //refuse une invitation
+   public static void supprimerAmis(int z,int s) {  //refuse une invitation
         try {
-            String req = "delete from amis where id_ue=? and id_ur=?";
-            PreparedStatement pstm = cnx.prepareStatement(req);
-            pstm.setInt(1, id_ue);
-            pstm.setInt(2, id_ur);
-            System.out.println(pstm);
-            pstm.executeUpdate();
+            String req = "delete from amis where (id_ue='"+z+"' and id_ur='"+s+"')";
+           Statement pstm=cnx.createStatement();
+            
+       
+          
+        pstm.execute(req);
+        } catch (SQLException ex) {
+            Logger.getLogger(UserCrud.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+   
+   public static void supprimer(int z,int s) {  //supprimer amis
+        try {
+           String req = "delete from amis where (id_ue='"+z+"' and id_ur='"+s+"' and etat_a=1) or (id_ue='"+s+"' and id_ur='"+z+"' and etat_a=1)";
+           Statement pstm=cnx.createStatement();
+            
+       
+          
+        pstm.execute(req);
         } catch (SQLException ex) {
             Logger.getLogger(UserCrud.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
 
-    public static void AccepterInvit(int id_ue, int id_ur ) { //aacepter une invitation 
+    public static void AccepterInvit(int id_ue) { //aacepter une invitation 
         try {
-            String req = "update amis set etat_a=1 where id_ue=? and id_ur=?";
+            String req = "update amis set etat_a=1 where id_ue='"+id_ue+"' and id_ur='"+Sessions.getCurrentSession()+"'";
             PreparedStatement pstm = cnx.prepareStatement(req);
-           // pstm.setInt(1, etat_a);
-            pstm.setInt(1, id_ue);
-            pstm.setInt(2, id_ur);
+           
             pstm.executeUpdate();
            
         } catch (SQLException ex) {
@@ -70,7 +88,7 @@ static Connection cnx;
     }
     
  
- public static void historique(int id){
+ /*public static void historique(int id){
 	
 	PreparedStatement ps=null;
 	ResultSet rs=null;
@@ -100,7 +118,7 @@ static Connection cnx;
 	} catch (Exception e) {
 		System.out.println(e);
 	}
-}
+}*/
  public static void ListAmis(int id){
 	
 	PreparedStatement ps=null;
@@ -132,4 +150,30 @@ static Connection cnx;
 		System.out.println(e);
 	}
 }
+ 
+  public static ArrayList<User> getUsersAmis() throws SQLException {
+        ArrayList<User> retour = new ArrayList<>();
+        Statement stm = cnx.createStatement();
+        String req = "SELECT id,username,email,firstname,lastname,nationalite,langues,descriptions,sexe FROM user";
+        ResultSet resultat = stm.executeQuery(req);
+        while (resultat.next()) {
+            int id=resultat.getInt("id");
+            String username = resultat.getString("username");
+            String email = resultat.getString("email");
+            String firstname = resultat.getString("firstname");
+            String lastname = resultat.getString("lastname");
+            String nationalite = resultat.getString("nationalite");
+            String langues = resultat.getString("langues");
+            String descriptions = resultat.getString("descriptions");
+            String sexe = resultat.getString("sexe");
+            retour.add(new User(id,username,email, firstname, lastname, nationalite, langues, descriptions,sexe));
+
+        }
+
+        return retour;
+    } 
+ 
+
+ 
+
 }

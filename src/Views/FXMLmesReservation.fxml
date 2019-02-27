@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="545.0" prefWidth="1069.0" stylesheets="@AfficheTous.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.FXMLmesReservationController">
+   <children>
+      <Button fx:id="Annuler" layoutX="931.0" layoutY="465.0" mnemonicParsing="false" style="-fx-background-color: #333;" text="Annuler reservation" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="76.0" fitWidth="565.0" layoutX="866.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/eeeeeeeeeeeee.jpg" />
+         </image>
+      </ImageView>
+      <TableView fx:id="table" layoutX="17.0" layoutY="120.0" prefHeight="332.0" prefWidth="1044.0">
+         <columns>
+            <TableColumn fx:id="idee" minWidth="0.0" prefWidth="223.0" text="Id event" visible="false" />
+            <TableColumn fx:id="Nom" prefWidth="97.0" text="Nom" />
+            <TableColumn fx:id="Type" prefWidth="81.0" text="Type" />
+            <TableColumn fx:id="Lieu" prefWidth="78.0" text="Lieu" />
+            <TableColumn fx:id="NumeroVilla" prefWidth="95.0" text="N° villa" />
+            <TableColumn fx:id="Pays" prefWidth="88.0" text="Pays" />
+            <TableColumn fx:id="DateDebut" prefWidth="140.0" text="DateDebut" />
+            <TableColumn fx:id="DateFin" prefWidth="116.0" text="DateFin" />
+            <TableColumn fx:id="Description" prefWidth="156.0" text="Description" />
+            <TableColumn fx:id="NombreDePlace" prefWidth="120.0" text="N° place" />
+            <TableColumn fx:id="Frais" prefWidth="68.0" text="Frais" />
+         </columns>
+      </TableView>
+      <ImageView fitHeight="25.0" fitWidth="32.0" layoutX="37.0" layoutY="496.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/52823486_585431795309564_7426182129060413440_n.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="Return" layoutX="62.0" layoutY="499.0" ripplerFill="BLACK" text="Retour">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXButton>
+      <Text layoutX="381.0" layoutY="482.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vous pouvez choisir et  Annuler votre reservation en cas de probleme" />
+      <ImageView fitHeight="17.0" fitWidth="14.0" layoutX="350.0" layoutY="470.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/anboubaaaa.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="459.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Consulter vos Reservations">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="381.0" layoutY="516.0" strokeType="OUTSIDE" strokeWidth="0.0" text="avec amiticia vous pouvez Gerer tous vos evenements" />
+      <ImageView fitHeight="14.0" fitWidth="14.0" layoutX="350.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/anboubaaaa.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.FXMLajoutEventController">
+   <children>
+      <Pane layoutX="10.0" layoutY="10.0" prefHeight="58.0" prefWidth="1280.0">
+         <children>
+            <ImageView fitHeight="28.0" fitWidth="36.0" layoutX="1238.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Assets/eveeee.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="10.0" layoutY="10.0" prefHeight="456.0" prefWidth="1012.0">
+         <children>
+            <Pane layoutX="258.0" layoutY="115.0" prefHeight="340.0" prefWidth="753.0">
+               <children>
+                  <JFXTextField fx:id="nbr" layoutX="-24.0" layoutY="-22.0" promptText="Nombre de place" />
+                  <JFXTextField fx:id="num" layoutX="-24.0" layoutY="44.0" promptText="Numero villa" />
+                  <JFXTextField fx:id="Frais" layoutX="-24.0" layoutY="110.0" promptText="Frais" />
+                  <JFXTextArea fx:id="Descr" layoutX="-24.0" layoutY="163.0" prefHeight="36.0" prefWidth="135.0" promptText="Description" />
+                  <DatePicker fx:id="dated" layoutX="-19.0" layoutY="261.0" promptText="Date début" />
+                  <Text layoutX="-25.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Merci de choisir une date de debut" />
+                  <ImageView fx:id="photo" fitHeight="150.0" fitWidth="200.0" layoutX="195.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" />
+                  <JFXButton fx:id="ajouterPhoto" layoutX="224.0" layoutY="187.0" onAction="#uploadPhoto" text="Choisir photo">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </Pane>
+            <Label layoutX="476.0" layoutY="14.0" text="Plannifier un evenement" textFill="#333333">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="10.0" layoutY="10.0" prefHeight="545.0" prefWidth="211.0">
+         <children>
+            <JFXTextField fx:id="Nom" layoutX="60.0" layoutY="93.0" promptText="Nom" />
+            <JFXTextField fx:id="Type" layoutX="60.0" layoutY="159.0" promptText="Type" />
+            <JFXTextField fx:id="Lieu" layoutX="60.0" layoutY="225.0" promptText="Lieu" />
+            <JFXTextField fx:id="Pays" layoutX="60.0" layoutY="288.0" promptText="Pays" />
+            <DatePicker fx:id="datef" layoutX="40.0" layoutY="372.0" promptText="Date Fin" />
+            <Text layoutX="43.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Merci de choisir une date de fin" />
+         </children>
+      </Pane>
+      <ImageView fitHeight="350.0" fitWidth="525.0" layoutX="740.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/evenement%20.jpeg" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="Annuler" layoutX="368.0" layoutY="492.0" prefHeight="25.0" prefWidth="127.0" text="Annuler">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="Valider" layoutX="558.0" layoutY="488.0" prefHeight="25.0" prefWidth="127.0" text="Valider" textFill="#030303">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

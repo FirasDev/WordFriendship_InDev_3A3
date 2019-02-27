@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@AfficheTous.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.FXMLaffichetousController">
+   <children>
+      <Pane layoutX="-29.0" layoutY="14.0" prefHeight="545.0" prefWidth="1069.0">
+         <children>
+            <JFXButton fx:id="Valider" layoutX="327.0" layoutY="63.0" prefHeight="25.0" prefWidth="127.0" text="Mes Logements" textFill="#030303">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <TableView fx:id="affichelog" layoutX="115.0" layoutY="116.0" prefHeight="398.0" prefWidth="888.0" stylesheets="@AfficheTous.css">
+               <columns>
+                  <TableColumn fx:id="id" prefWidth="48.0" text="id" visible="false" />
+                  <TableColumn fx:id="nomlog" prefWidth="191.0" text="Titre" />
+                  <TableColumn fx:id="desc" prefWidth="254.0" text="Description" />
+                  <TableColumn fx:id="nbr_place" prefWidth="192.0" text="nombre place" />
+                  <TableColumn fx:id="prix" prefWidth="100.0" text="prix" />
+                  <TableColumn fx:id="dope" prefWidth="146.0" text="cite" />
+               </columns>
+            </TableView>
+            <JFXTextField fx:id="recherche" layoutX="860.0" layoutY="75.0" promptText="trouver un logement" />
+            <ImageView fitHeight="25.0" fitWidth="16.0" layoutX="979.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Assets/loop-png.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="314.0" layoutY="12.0" text="Avec Amiticia Trouver votre logement prefere ">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="ajouter" layoutX="109.0" layoutY="63.0" prefHeight="30.0" prefWidth="172.0" text="Ajouter un Logement" textFill="#030303">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
+      <ImageView fitHeight="42.0" fitWidth="34.0" layoutX="1236.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/csm_Accroche_logement_fb9eb4e064.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

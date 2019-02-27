@@ -25,7 +25,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
       //  Parent root = FXMLLoader.load(getClass().getResource("login_form.fxml"));
-      Parent root = FXMLLoader.load(getClass().getResource("FXMLmenueout.fxml"));
+      Parent root = FXMLLoader.load(getClass().getResource("Dashboard.fxml"));
         primaryStage.setTitle("Word Friendship");
         primaryStage.setScene(new Scene(root));
 	primaryStage.setResizable(false);

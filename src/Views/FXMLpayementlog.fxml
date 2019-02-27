@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.FXMLpayementlogController">
+   <children>
+      <Label layoutX="278.0" layoutY="130.0" prefHeight="27.0" prefWidth="146.0" text="N° de Carte Banquaire">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="230.0" layoutY="260.0" prefHeight="27.0" prefWidth="34.0" text="prix">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="388.0" layoutY="260.0" prefHeight="27.0" prefWidth="34.0" text="cvc">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="382.0" layoutY="187.0" prefHeight="27.0" prefWidth="80.0" text="exp_month">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="228.0" layoutY="188.0" prefHeight="27.0" prefWidth="73.0" text="exp_year">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="carte" layoutX="220.0" layoutY="160.0" prefHeight="25.0" prefWidth="231.0" />
+      <JFXTextField fx:id="month" layoutX="388.0" layoutY="216.0" prefHeight="25.0" prefWidth="34.0" />
+      <JFXTextField fx:id="cvc" layoutX="388.0" layoutY="299.0" prefHeight="25.0" prefWidth="34.0" />
+      <JFXTextField fx:id="year" layoutX="239.0" layoutY="216.0" prefHeight="25.0" prefWidth="34.0" />
+      <JFXTextField fx:id="prix" editable="false" layoutX="239.0" layoutY="299.0" prefHeight="25.0" prefWidth="34.0" />
+      <JFXButton fx:id="valider" layoutX="343.0" layoutY="347.0" prefHeight="30.0" prefWidth="125.0" text="Valider" textFill="#030303">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </JFXButton>
+      <ImageView fitHeight="88.0" fitWidth="259.0" layoutX="206.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/shop-now-png-3.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="Annuler" layoutX="208.0" layoutY="347.0" prefHeight="30.0" prefWidth="125.0" text="Annuler" textFill="#030303">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </JFXButton>
+      <ImageView fitHeight="13.0" fitWidth="22.0" layoutX="205.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/kisspng-computer-icons-encapsulated-postscript-sketch-agenda-5ac9831739a941.7886730115231557352362.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="19.0" fitWidth="22.0" layoutX="360.0" layoutY="195.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/kisspng-computer-icons-encapsulated-postscript-sketch-agenda-5ac9831739a941.7886730115231557352362.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="284.0" layoutY="299.0" prefHeight="25.0" prefWidth="14.0" text="\$">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="13.0" fitWidth="14.0" layoutX="210.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/kisspng-computer-icons-price-tag-price-tag-5abdce6c14d071.5209161515223885880853.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="14.0" layoutX="367.0" layoutY="264.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/seo-social-web-network-internet_134_icon-icons.com_61490.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="19.0" fitWidth="96.0" layoutX="243.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/img_458002.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

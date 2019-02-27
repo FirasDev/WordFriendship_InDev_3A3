@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.FXMLafficheLogementController">
+   <children>
+      <BorderPane layoutX="10.0" layoutY="41.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="1128.0">
+         <center>
+            <Pane prefHeight="545.0" prefWidth="1069.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TableView fx:id="affichelog" layoutX="124.0" layoutY="145.0" prefHeight="403.0" prefWidth="670.0" stylesheets="@AfficheTous.css">
+                     <columns>
+                        <TableColumn fx:id="nomlog" prefWidth="208.0" text="Nom_logement" />
+                        <TableColumn fx:id="desc" prefWidth="142.0" text="description" />
+                        <TableColumn fx:id="prix" prefWidth="82.0" text="prix" />
+                        <TableColumn fx:id="nbr_place" prefWidth="249.0" text="nombre de place" />
+                        <TableColumn fx:id="id_log1" prefWidth="249.0" text="id_log1" visible="false" />
+                     </columns>
+                  </TableView>
+                  <Label layoutX="550.0" layoutY="14.0" text="Vos Logements">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="nom_log" layoutX="853.0" layoutY="204.0" prefHeight="25.0" prefWidth="124.0" promptText="Titre " />
+                  <JFXTextArea fx:id="desc1" layoutX="848.0" layoutY="269.0" prefHeight="58.0" prefWidth="127.0" promptText="Description">
+                     <opaqueInsets>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </opaqueInsets>
+                  </JFXTextArea>
+                  <JFXTextField fx:id="prix1" layoutX="1004.0" layoutY="204.0" prefHeight="25.0" prefWidth="106.0" promptText="prix" />
+                  <JFXTextField fx:id="nbr_place1" layoutX="848.0" layoutY="390.0" prefHeight="25.0" prefWidth="125.0" promptText="nombre de place" />
+                  <JFXButton fx:id="Valider" layoutX="994.0" layoutY="492.0" prefHeight="25.0" prefWidth="127.0" text="Valider" textFill="#030303">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="Delete" layoutX="844.0" layoutY="492.0" prefHeight="25.0" prefWidth="127.0" text="Supprimer">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXTextField fx:id="nom_cite1" layoutX="1006.0" layoutY="302.0" prefHeight="25.0" prefWidth="103.0" promptText="Adresse" />
+                  <JFXTextField fx:id="numero2" layoutX="1005.0" layoutY="390.0" prefHeight="25.0" prefWidth="105.0" promptText="Numero villa" />
+                  <JFXTextField fx:id="nom_log2" layoutX="744.0" layoutY="236.0" opacity="0.0" promptText="Titre " text="m5obbi" visible="false" />
+                  <JFXTextField fx:id="rami" layoutX="827.0" layoutY="226.0" visible="false" />
+                  <JFXButton fx:id="retour" layoutX="-2.0" layoutY="-30.0" prefHeight="25.0" prefWidth="127.0" text="Retour">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <ImageView fitHeight="42.0" fitWidth="24.0" layoutX="6.0" layoutY="-28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Assets/back.JPG" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="859.0" layoutY="144.0" text="Modifier vos Logements">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="id_log" layoutX="941.0" layoutY="82.0" prefHeight="25.0" prefWidth="106.0" promptText="prix" text="id_log" visible="false" />
+               </children>
+            </Pane>
+         </center>
+      </BorderPane>
+      <ImageView fitHeight="49.0" fitWidth="42.0" layoutX="1232.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/csm_Accroche_logement_fb9eb4e064.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="160.0" layoutY="623.0" text="Vous pouvez  modifier vos données en cliquant sur le logement selectionné" />
+      <ImageView fitHeight="31.0" fitWidth="17.0" layoutX="131.0" layoutY="623.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/anbouba.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

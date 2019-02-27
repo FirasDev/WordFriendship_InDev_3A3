@@ -12,9 +12,9 @@
    <children>
       <TableView fx:id="tableView" layoutX="232.0" layoutY="176.0" prefHeight="314.0" prefWidth="630.0">
         <columns>
+            <TableColumn fx:id="idd" prefWidth="118.4000244140625" text="idd" visible="false" />
           <TableColumn fx:id="firstname" prefWidth="128.00006103515625" text="Firstname" />
           <TableColumn fx:id="lastname" prefWidth="118.4000244140625" text="Lastname" />
-            <TableColumn fx:id="idd" prefWidth="118.4000244140625" text="idd" visible="false" />
         </columns>
       </TableView>
       <ImageView fitHeight="203.0" fitWidth="210.0" layoutX="11.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
@@ -33,12 +33,12 @@
             <Image url="@../Assets/Amiticia.png" />
          </image>
       </ImageView>
-      <Button fx:id="profil" layoutX="24.0" layoutY="498.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="28.0" text="profil" />
-      <ImageView layoutX="24.0" layoutY="498.0">
+      <ImageView layoutX="38.0" layoutY="447.0">
          <image>
             <Image url="@../Assets/return.png" />
          </image>
       </ImageView>
       <Button fx:id="supprimer" layoutX="521.0" layoutY="499.0" mnemonicParsing="false" text="Button" />
+      <Button fx:id="profil" layoutX="27.0" layoutY="499.0" mnemonicParsing="false" text="return" />
    </children>
 </AnchorPane>

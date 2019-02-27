@@ -68,14 +68,17 @@ public class FXMLmodifierUserController implements Initializable {
     @FXML
     private DatePicker date_naissance;
     
-    @FXML
-    private TextField photo_p;
+  
     @FXML
     private TextField descriptions;
      @FXML
     private TextField sexe;
     @FXML
+    private TextField tel;
+    @FXML
     private Button valider;
+    @FXML
+    private Button profil;
     @FXML
     private JFXButton desactiver;
     /**
@@ -87,8 +90,20 @@ public class FXMLmodifierUserController implements Initializable {
             Connection cnx;
             cnx = MyDBcon.getInstance().getCon();
             
+            profil.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    profil.getScene().setRoot(FXMLLoader.load(getClass().getResource("../Views/FXMLafficherUser.fxml")));
+
+                } catch (IOException ex) {
+                    Logger.getLogger(FXMLajouterUserController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            }
+        });
             
-            String req2 = "SELECT username,email,firstname,lastname,nationalite,langues,date_naissance,photo_p,descriptions,sexe FROM user where id='"+Sessions.getCurrentSession()+"'";
+            String req2 = "SELECT username,firstname,lastname,nationalite,langues,date_naissance,descriptions,sexe , tel FROM user where id='"+Sessions.getCurrentSession()+"'";
                  PreparedStatement pstm2 = cnx.prepareStatement(req2); 
                  ResultSet rs= pstm2.executeQuery(req2);   
                    
@@ -96,22 +111,17 @@ public class FXMLmodifierUserController implements Initializable {
                  {     
                      
                      username.setText(rs.getString("username"));
-                       email.setText(rs.getString("email"));
                      firstname.setText(rs.getString("firstname"));
                      lastname.setText(rs.getString("lastname"));
                      nationalite.setText(rs.getString("nationalite"));
                      langues.setText(rs.getString("langues"));
-                     
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                      LocalDate d1 = LocalDate.parse(rs.getString("date_naissance"), formatter);
                      date_naissance.setValue(d1);
-                     
-                     
-                     photo_p.setText(rs.getString("photo_p"));
-                    
+                  
                      descriptions.setText(rs.getString("descriptions"));
                      sexe.setText(rs.getString("sexe"));
-                    
+                     tel.setText(String.valueOf(rs.getInt("tel"))); 
 
                  }
                   } catch (SQLException ex) {
@@ -127,7 +137,7 @@ public class FXMLmodifierUserController implements Initializable {
                      ps = new UserCrud();
                      //User u = new User(username.getText(),email.getText(),password.getText(), firstname.getText(),lastname.getText(),nationalite.getText(),langues.getText(), photo_p.getText(),descriptions.getText());
         //Grade g=new Grade("new user");
-         if (username.getText().isEmpty() || email.getText().isEmpty() || firstname.getText().isEmpty()||lastname.getText().isEmpty()||nationalite.getText().isEmpty()||langues.getText().isEmpty()||descriptions.getText().isEmpty()||sexe.getText().isEmpty()) {
+        if (username.getText().isEmpty() || firstname.getText().isEmpty()||lastname.getText().isEmpty()||nationalite.getText().isEmpty()||langues.getText().isEmpty()||descriptions.getText().isEmpty()||sexe.getText().isEmpty() || tel.getText().isEmpty()){
             showAlert(Alert.AlertType.ERROR, "Données erronés", "Verifier les données", "Veuillez bien remplir tous les champs !");
            
         }
@@ -136,14 +146,13 @@ public class FXMLmodifierUserController implements Initializable {
                
             }
         
-        else if(!Pattern.matches("^[a-zA-Z]+[a-zA-Z0-9\\._-]*[a-zA-Z0-9]@[a-zA-Z]+"
-                        + "[a-zA-Z0-9\\._-]*[a-zA-Z0-9]+\\.[a-zA-Z]{2,4}$", email.getText()))
-                {
-                    showAlert(Alert.AlertType.ERROR, "Données erronés", "Verifier les données", "Mail invalid !");
-                }
+       
          else {
-       ps.modifierUser(Sessions.getCurrentSession(),username.getText(),email.getText(), firstname.getText(),lastname.getText(),nationalite.getText(),langues.getText(),date_naissance.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.US)), photo_p.getText(),descriptions.getText(),sexe.getText());
-         }
+            
+       ps.modifierUser(Sessions.getCurrentSession(),username.getText(), firstname.getText(),lastname.getText(),nationalite.getText(),
+               langues.getText(),date_naissance.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.US)), 
+               descriptions.getText(),sexe.getText(),Integer.parseInt(tel.getText()));
+}
                 } catch (SQLException ex) {
                     Logger.getLogger(FXMLajouterUserController.class.getName()).log(Level.SEVERE, null, ex);
                 }

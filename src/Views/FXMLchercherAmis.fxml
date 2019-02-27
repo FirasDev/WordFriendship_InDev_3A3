@@ -42,5 +42,6 @@
             <TableColumn fx:id="id" prefWidth="75.0" text="id" visible="false" />
          </columns>
       </TableView>
+      <Button fx:id="profil" layoutX="75.0" layoutY="486.0" mnemonicParsing="false" text="retour" />
    </children>
 </AnchorPane>

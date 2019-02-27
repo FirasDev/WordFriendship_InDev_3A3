@@ -48,7 +48,7 @@
             <Image url="@../Assets/no.png" />
          </image>
       </ImageView>
-      <ImageView layoutX="14.0" layoutY="488.0">
+      <ImageView layoutX="42.0" layoutY="488.0">
          <image>
             <Image url="@../Assets/return.png" />
          </image>

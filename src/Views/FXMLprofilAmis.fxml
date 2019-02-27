@@ -34,5 +34,6 @@
             <Image url="@../Assets/Amiticia.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="ImageView" fitHeight="203.0" fitWidth="200.0" layoutX="638.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

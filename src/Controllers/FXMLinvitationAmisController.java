@@ -70,8 +70,21 @@ public class FXMLinvitationAmisController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        profil.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    profil.getScene().setRoot(FXMLLoader.load(getClass().getResource("../Views/FXMLafficherUser.fxml")));
 
-      display();
+                } catch (IOException ex) {
+                    Logger.getLogger(FXMLajouterUserController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            }
+        });
+
+        display();
         // TODO
         tableview.setRowFactory(tv -> {
             TableRow<User> row = new TableRow<>();
@@ -81,11 +94,9 @@ public class FXMLinvitationAmisController implements Initializable {
 
                     int myIndex = tableview.getSelectionModel().getSelectedIndex();
                     User clickedRow = tableview.getItems().get(myIndex);
-                   
+
                     try {
                         printRow(clickedRow);
-                       
-  
 
                     } catch (SQLException ex) {
                         Logger.getLogger(FXMLinvitationAmisController.class.getName()).log(Level.SEVERE, null, ex);
@@ -102,8 +113,6 @@ public class FXMLinvitationAmisController implements Initializable {
 
         Connection cnx;
         cnx = MyDBcon.getInstance().getCon();
-        
-        
 
         refuser.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -142,23 +151,12 @@ public class FXMLinvitationAmisController implements Initializable {
 
             }
         });
+
         
-        profil.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    profil.getScene().setRoot(FXMLLoader.load(getClass().getResource("../Views/FXMLafficherUser.fxml")));
-
-                } catch (IOException ex) {
-                    Logger.getLogger(FXMLinvitationAmisController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-            }
-        });
     }
-    
-    private void display(){
-          try {
+
+    private void display() {
+        try {
 
             try {
                 AdminService lc = new AdminService();
@@ -167,9 +165,8 @@ public class FXMLinvitationAmisController implements Initializable {
                 Logger.getLogger(FXMLadminUserController.class.getName()).log(Level.SEVERE, null, ex);
             }
             ArrayList<User> user = invitationAmis.afficherProfil();
-           
+
             ObservableList<User> obs = FXCollections.observableArrayList(user);
-           
 
             //  filter = new FilteredList(obs,e->true);
             tableview.setItems(obs);

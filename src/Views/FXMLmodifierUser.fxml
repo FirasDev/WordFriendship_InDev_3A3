@@ -16,11 +16,9 @@
       <Label layoutX="244.0" layoutY="232.0" text="Username :" />
       <Label layoutX="243.0" layoutY="281.0" text="First name :" />
       <Label layoutX="242.0" layoutY="339.0" text="Last name :" />
-      <Label layoutX="243.0" layoutY="499.0" text="Email :" />
       <Label layoutX="612.0" layoutY="451.0" text="Langue :" />
       <Label layoutX="609.0" layoutY="337.0" text="Description :" />
       <Label layoutX="610.0" layoutY="393.0" text="Nationalite :" />
-      <Label layoutX="610.0" layoutY="278.0" text="Photo :" />
       <Button fx:id="valider" layoutX="980.0" layoutY="447.0" mnemonicParsing="false" text="Valider" />
       <ImageView fitHeight="203.0" fitWidth="210.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -33,12 +31,10 @@
          </image>
       </ImageView>
       <JFXTextField fx:id="username" layoutX="352.0" layoutY="218.0" prefHeight="26.0" prefWidth="174.0" />
-      <JFXTextField fx:id="email" layoutX="352.0" layoutY="488.0" prefHeight="26.0" prefWidth="174.0" />
       <JFXTextField fx:id="firstname" layoutX="352.0" layoutY="265.0" prefHeight="26.0" prefWidth="174.0" />
       <JFXTextField fx:id="lastname" layoutX="352.0" layoutY="316.0" prefHeight="26.0" prefWidth="174.0" />
       <JFXTextField fx:id="nationalite" layoutX="718.0" layoutY="381.0" prefHeight="26.0" prefWidth="174.0" />
       <JFXTextField fx:id="langues" layoutX="718.0" layoutY="438.0" prefHeight="26.0" prefWidth="174.0" />
-      <JFXTextField fx:id="photo_p" layoutX="718.0" layoutY="269.0" prefHeight="26.0" prefWidth="174.0" />
       <JFXTextField fx:id="descriptions" layoutX="718.0" layoutY="323.0" prefHeight="26.0" prefWidth="174.0" />
       <DatePicker fx:id="date_naissance" layoutX="352.0" layoutY="389.0" />
       <Text layoutX="242.0" layoutY="406.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date de naissance :" />
@@ -57,7 +53,8 @@
       <JFXButton alignment="CENTER" contentDisplay="RIGHT" layoutX="66.0" layoutY="403.0" text="Nos Blog" textAlignment="CENTER" />
       <JFXButton alignment="CENTER" contentDisplay="RIGHT" layoutX="63.0" layoutY="438.0" text="Logements" />
       <Button fx:id="menue" layoutX="74.0" layoutY="228.0" mnemonicParsing="false" text="menue" />
-      <JFXTextField fx:id="tel" layoutX="718.0" layoutY="491.0" prefHeight="26.0" prefWidth="174.0" />
-      <Text layoutX="609.0" layoutY="517.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N° Telephone :" />
+      <JFXTextField fx:id="tel" layoutX="352.0" layoutY="494.0" prefHeight="26.0" prefWidth="174.0" />
+      <Text layoutX="247.0" layoutY="512.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tel :" wrappingWidth="37.600005358457565" />
+      <Button fx:id="profil" layoutX="73.0" layoutY="487.0" mnemonicParsing="false" text="return" />
    </children>
 </AnchorPane>

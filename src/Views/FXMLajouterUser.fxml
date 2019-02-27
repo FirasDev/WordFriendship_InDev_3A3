@@ -58,7 +58,7 @@
             <Font size="27.0" />
          </font>
       </Text>
-      <JFXButton fx:id="btnbrowser" layoutX="614.0" layoutY="205.0" onAction="#handleBrowser" text="Photo :" />
+      <JFXButton fx:id="btnbrowser" layoutX="614.0" layoutY="205.0" onAction="#uploadPhoto" text="Photo :" />
       <ImageView fx:id="imageView" fitHeight="194.0" fitWidth="211.0" layoutX="733.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" />
       <JFXRadioButton fx:id="male" layoutX="330.0" layoutY="436.0" onAction="#maleselected" selected="true" text="Male">
          <toggleGroup>

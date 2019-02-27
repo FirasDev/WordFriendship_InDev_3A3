@@ -33,9 +33,14 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import Entities.User;
+import com.jfoenix.controls.JFXPasswordField;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javafx.scene.control.PasswordField;
+import org.controlsfx.control.Notifications;
+
+
 
 /**
  * FXML Controller class
@@ -49,7 +54,8 @@ public class FXMLloginController implements Initializable {
     @FXML
     private JFXTextField email;
     @FXML
-    private JFXTextField password;
+    private JFXPasswordField password;
+    //private JFXPasswordField password;
     @FXML
     private Button inscription;
 
@@ -59,7 +65,7 @@ public class FXMLloginController implements Initializable {
         cnxx.setOnAction((ActionEvent event) -> {
             try {
                 connexion(event);
-                //Parent root = FXMLLoader.load(getClass().getResource("FXMLprofilAmis.fxml"));
+              //  Notifications.create().title("aa").showInformation();
             } catch (IOException | SQLException ex) {
                 Logger.getLogger(FXMLloginController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -107,8 +113,8 @@ public class FXMLloginController implements Initializable {
 
         e = email.getText();
         p = password.getText();
-        //System.out.println(e);
-
+        //System.out.println(e); PasswordField
+    
         if (UserCrud.CheckUserEmail(e)) { //verif email
             System.out.println("email c bn");
             u.setEmail(email.getText());

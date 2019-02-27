@@ -13,11 +13,13 @@ import Services.UserCrud;
 import Utils.MyDBcon;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,6 +28,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 /**
  * FXML Controller class
@@ -44,6 +48,8 @@ public class FXMLprofilAmisController implements Initializable {
     private JFXTextField nationalite;
     @FXML
     private JFXButton envoyer;
+    @FXML
+    private ImageView imageView;
 
     /**
      * Initializes the controller class.
@@ -51,7 +57,7 @@ public class FXMLprofilAmisController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        try {
+      /*  try {
             Connection cnx;
             cnx = MyDBcon.getInstance().getCon();
 
@@ -65,11 +71,12 @@ public class FXMLprofilAmisController implements Initializable {
                 firstname.setText(rs.getString("firstname"));
                 lastname.setText(rs.getString("lastname"));
                 nationalite.setText(rs.getString("nationalite"));
+                
             }
 
         } catch (SQLException ex) {
 
-        }
+        }*/
 
     }
 
@@ -86,7 +93,7 @@ public class FXMLprofilAmisController implements Initializable {
 //        }
 //    }
     
-    public void invit(int a,int s)
+    public void invit(int a,int s) throws IOException
     {
         try {
             AmisCrud ps=new AmisCrud();
@@ -101,5 +108,23 @@ public class FXMLprofilAmisController implements Initializable {
         firstname.setText(u.getFirstname());
         lastname.setText(u.getLastname());
         nationalite.setText(u.getNationalite());
+       // getImg(email.getText());
+    }
+    
+    public void getImg(String idd) throws SQLException, IOException {
+        Connection cnx = MyDBcon.getInstance().getCon();
+
+        String q = "SELECT `photo_p` FROM `user` WHERE email='"+idd+"'";
+
+        Statement stm = cnx.createStatement();
+        ResultSet rs = stm.executeQuery(q);
+
+        if (rs.next()) {
+           
+            String imagePath = "file:/" + rs.getString("photo_p");
+            Image im = new Image(imagePath);
+            System.out.println(im);
+            imageView.setImage(im);
+        }
     }
 }

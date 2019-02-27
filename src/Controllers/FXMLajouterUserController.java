@@ -45,9 +45,17 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import Services.EmailSend;
+import java.awt.image.BufferedImage;
+import java.nio.file.Paths;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.geometry.Pos;
+import javafx.scene.image.WritableImage;
 import javafx.util.Duration;
+import javax.imageio.ImageIO;
+import org.apache.commons.io.FileUtils;
 import org.controlsfx.control.Notifications;
+
+
 
 /**
  * FXML Controller class
@@ -103,6 +111,11 @@ public class FXMLajouterUserController implements Initializable {
     private JFXRadioButton femele;
     @FXML
     private ComboBox<?> combolangue;
+    
+    private String content;
+    
+
+
   
 
    // @FXML
@@ -121,20 +134,19 @@ public class FXMLajouterUserController implements Initializable {
                 );
             
         ok.setOnAction(new EventHandler<ActionEvent>() {
+           
+            
             @Override
             public void handle(ActionEvent event) {
                 
                 UserCrud ps;
-                
-                
-                
-               
+
                 //combolangue.setItems(liste);
                 //langue.setText(combolangue.getValue());
                 try {
                      ps = new UserCrud();
                      
-                     User u = new User(username.getText(),email.getText(),password.getText(), firstname.getText(),lastname.getText(),nationalite.getText(),langue.getText(),date_naissance.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.US)),  photo.getText(),description.getText(),sexe.getText(),Integer.parseInt(tel.getText())); //date_naissance.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.US)),
+                     User u = new User(username.getText(),email.getText(),password.getText(), firstname.getText(),lastname.getText(),nationalite.getText(),langue.getText(),date_naissance.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.US)),  content,description.getText(),sexe.getText(),Integer.parseInt(tel.getText())); //date_naissance.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.US)),
         Grade g=new Grade("new user");
         
         if (username.getText().isEmpty() || email.getText().isEmpty() || password.getText().isEmpty()||firstname.getText().isEmpty()||lastname.getText().isEmpty()||nationalite.getText().isEmpty()||langue.getText().isEmpty()||description.getText().isEmpty()) {
@@ -161,25 +173,20 @@ public class FXMLajouterUserController implements Initializable {
             
         
          ps.ajouterUser(email.getText(),u,g);
+            
          
          int code = ps.getCode_confir(email.getText());
          System.out.println("le code de mail est" + code);
          EmailSend em = new EmailSend();
          em.sendmail(email.getText(),code);
-         Notifications.create()
-                                .title("Amiticia")
-                                .text("un nouveau membre s'est inscrit !").darkStyle().hideAfter(Duration.seconds(5)).position(Pos.BOTTOM_RIGHT)
-                                .showInformation();
-
-       
-       
+         Notifications.create().title("Un nouveau membre s'est inscrit !").showInformation();
         }
                 } catch (SQLException ex) {
                     Logger.getLogger(FXMLajouterUserController.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 
                  try {
-                    ok.getScene().setRoot(FXMLLoader.load(getClass().getResource("../Views/FXMLajouterUser.fxml")));
+                    ok.getScene().setRoot(FXMLLoader.load(getClass().getResource("../Views/FXMLlogin.fxml")));
                     
                 } catch (IOException ex) {
                     Logger.getLogger(FXMLajouterUserController.class.getName()).log(Level.SEVERE, null, ex);
@@ -242,7 +249,100 @@ public class FXMLajouterUserController implements Initializable {
     
     
     
+  @FXML
+    String uploadPhoto(ActionEvent event) throws IOException {
+        FileChooser file = new FileChooser(); //pour choisir la photo
+        file.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Images", "*.jpg", "*.png", "*.bmp"));
+        file.setTitle("Choisir une photo du produit");
+
+        File selected_photo = file.showOpenDialog((Stage) btnbrowser.getScene().getWindow());
+        if (selected_photo != null) {
+            if ((selected_photo.length() / 1024) / 1024 < 2.0) {
+                String path = selected_photo.getAbsolutePath();
+                BufferedImage bufferedImage = ImageIO.read(selected_photo);
+                WritableImage image = SwingFXUtils.toFXImage(bufferedImage, null);
+                imageView.setImage(image);
+
+                File img = new File(path);
+
+                content = img.getPath();
+                copyFile();
+
+            } else {
+                showAlert(Alert.AlertType.ERROR, "Erreur", "Taile trop grande !", "Veuillez choisir une photo de profil avec une taille < 2 Mo");
+            }
+        }
+        return content;
+
+    }
+    public void copyFile() throws IOException {
+        File srcd = Paths.get(content).toFile();
+        File sd = Paths.get("C:\\Users\\Jamila\\Desktop\\tessstajout\\suivie2\\src\\Assets").toFile();
+
+        //copy source to target using Files Class
+   FileUtils.copyFileToDirectory(srcd,sd);
+
    
+    }
+    
+  /*  @FXML
+
+    private void ok (ActionEvent event) throws IOException, SQLException {
+        
+         UserCrud ps;
+
+                //combolangue.setItems(liste);
+                //langue.setText(combolangue.getValue());
+                try {
+                     ps = new UserCrud();
+                     
+                     User u = new User(username.getText(),email.getText(),password.getText(), firstname.getText(),lastname.getText(),nationalite.getText(),langue.getText(),date_naissance.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.US)),  content,description.getText(),sexe.getText(),Integer.parseInt(tel.getText())); //date_naissance.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.US)),
+        Grade g=new Grade("new user");
+        
+        if (username.getText().isEmpty() || email.getText().isEmpty() || password.getText().isEmpty()||firstname.getText().isEmpty()||lastname.getText().isEmpty()||nationalite.getText().isEmpty()||langue.getText().isEmpty()||description.getText().isEmpty()) {
+            showAlert(Alert.AlertType.ERROR, "Données erronés", "Verifier les données", "Veuillez bien remplir tous les champs !");
+           
+        }
+        else if(!Pattern.matches("^[a-zA-Z]+[a-zA-Z0-9\\._-]*[a-zA-Z0-9]@[a-zA-Z]+"
+                        + "[a-zA-Z0-9\\._-]*[a-zA-Z0-9]+\\.[a-zA-Z]{2,4}$", email.getText()))
+                {
+                    showAlert(Alert.AlertType.ERROR, "Données erronés", "Verifier les données", "Mail invalid !");
+                }
+       
+       else if(!password.getText().equals(passwordc.getText()))
+                {
+                    showAlert(Alert.AlertType.ERROR, "Données erronés", "Verifier les données", "les deux mot de passe ne sont pas identique !");
+                }
+        else if (!Pattern.matches("^[\\p{L} .'-]+$", username.getText())||!Pattern.matches("^[a-zA-Z0-9]*$", password.getText())||!Pattern.matches("^[a-zA-Z0-9]*$", firstname.getText())||!Pattern.matches("^[a-zA-Z0-9]*$", lastname.getText())||!Pattern.matches("^[a-zA-Z0-9]*$", nationalite.getText())||!Pattern.matches("^[a-zA-Z0-9]*$", langue.getText())||!Pattern.matches("^[a-zA-Z0-9]*$", description.getText())) {
+                showAlert(Alert.AlertType.ERROR, "Données erronés", "Verifier les données", "champ doit etre alphabetique ! ");
+                
+               
+            }
+         else {
+            
+            
+        
+         ps.ajouterUser(email.getText(),u,g);
+            
+         
+         int code = ps.getCode_confir(email.getText());
+         System.out.println("le code de mail est" + code);
+         EmailSend em = new EmailSend();
+         em.sendmail(email.getText(),code);
+         Notifications.create().title("aa").showInformation();
+        }
+                } catch (SQLException ex) {
+                    Logger.getLogger(FXMLajouterUserController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                 try {
+                    ok.getScene().setRoot(FXMLLoader.load(getClass().getResource("../Views/FXMLajouterUser.fxml")));
+                    
+                } catch (IOException ex) {
+                    Logger.getLogger(FXMLajouterUserController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+    
+    }*/
 }
         
         

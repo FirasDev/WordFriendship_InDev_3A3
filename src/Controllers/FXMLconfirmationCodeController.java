@@ -68,12 +68,13 @@ public class FXMLconfirmationCodeController implements Initializable {
                     if (UserCrud.getCodeconfirmation(id)) {
                         ps.aotorisation(id);
                         System.out.println("ok");
+                        confirm.getScene().setRoot(FXMLLoader.load(getClass().getResource("../Views/FXMLlogin.fxml")));
                     }
                     
                      else { System.out.println("c pas ok");
                          }
 
-                 confirm.getScene().setRoot(FXMLLoader.load(getClass().getResource("../Views/FXMLajouterUser.fxml")));
+                 
 
                 } catch (SQLException ex) {
                     Logger.getLogger(FXMLconfirmationCodeController.class.getName()).log(Level.SEVERE, null, ex);
@@ -97,4 +98,5 @@ public class FXMLconfirmationCodeController implements Initializable {
 
 );
     }
+    
 }

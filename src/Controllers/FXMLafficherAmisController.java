@@ -20,6 +20,8 @@ import Services.invitationAmis;
 import Utils.MyDBcon;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -48,11 +50,11 @@ import javafx.stage.Stage;
 public class FXMLafficherAmisController implements Initializable {
 
     @FXML
-    private TableColumn<User, String> firstname;
+    private static TableColumn<User, String> firstname;
     @FXML
-    private TableColumn<User, String> lastname;
+    private static TableColumn<User, String> lastname;
     @FXML
-    private TableColumn<User, Integer> idd;
+    private static TableColumn<User, Integer> idd;
     @FXML
     private TableView<User> tableView;
     @FXML
@@ -60,116 +62,151 @@ public class FXMLafficherAmisController implements Initializable {
     @FXML
     private Button supprimer;
 
+    static Connection cnx;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        UserCrud ps;
+       
         try {
-            ps = new UserCrud();
+            // TODO
+//        UserCrud ps;
+//        
+//         tableView.setRowFactory(tv -> {
+//            TableRow<User> row = new TableRow<>();
+//            row.setOnMouseClicked(event -> {
+//                if (!row.isEmpty() && event.getButton() == MouseButton.PRIMARY
+//                        && event.getClickCount() == 2) {
+//
+//                    try {
+//                        int myIndex = tableView.getSelectionModel().getSelectedIndex();
+//                        User clickedRow = tableView.getItems().get(myIndex);
+//
+//                        printRow(clickedRow);
+//                        System.out.println(clickedRow);
+//
+//                    } catch (SQLException ex) {
+//                        Logger.getLogger(FXMLafficherAmisController.class.getName()).log(Level.SEVERE, null, ex);
+//                    }
+//
+//                }
+//            });
+//            return row;
+//        });
+//         
+//        try {
+//            ps = new UserCrud();
+//
+//            ArrayList<User> arrayList = ps.getAmisU(Sessions.getCurrentSession());
+//            System.out.println(arrayList);
+//            ObservableList obs = FXCollections.observableArrayList(arrayList);
+//            tableView.setItems(obs);
+//            firstname.setCellValueFactory(new PropertyValueFactory<>("lastname"));
+//            lastname.setCellValueFactory(new PropertyValueFactory<>("lastname"));
+//            idd.setCellValueFactory(new PropertyValueFactory<>("id"));
+//        } catch (SQLException ex) {
+//            Logger.getLogger(FXMLafficherAmisController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        profil.setOnAction(new EventHandler<ActionEvent>() {
+//            @Override
+//            public void handle(ActionEvent event) {
+//                try {
+//                    profil.getScene().setRoot(FXMLLoader.load(getClass().getResource("../Views/FXMLafficherUser.fxml")));
+//
+//                } catch (IOException ex) {
+//                    Logger.getLogger(FXMLajouterUserController.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//
+//            }
+//        });
+//
+//
+//
+//        profil.setOnAction(new EventHandler<ActionEvent>() {
+//            @Override
+//            public void handle(ActionEvent event) {
+//                try {
+//                    profil.getScene().setRoot(FXMLLoader.load(getClass().getResource("../Views/FXMLafficherUser.fxml")));
+//
+//                } catch (IOException ex) {
+//                    Logger.getLogger(FXMLajouterUserController.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//
+//            }
+//        });
+//
+//    }
+//
+//    private void printRow(User item) throws SQLException {
+//
+//        Connection cnx;
+//        cnx = MyDBcon.getInstance().getCon();
+//
+//        supprimer.setOnAction(new EventHandler<ActionEvent>() {
+//            @Override
+//            public void handle(ActionEvent event) {
+//                Alert dialogC = new Alert(Alert.AlertType.CONFIRMATION);
+//                dialogC.setTitle("A confirmation dialog-box");
+//                dialogC.setHeaderText(null);
+//                dialogC.setContentText("Voulez vous vraiment Supprimer cet evenement ?");
+//                Optional<ButtonType> answer = dialogC.showAndWait();
+//                if (answer.get() == ButtonType.OK) {
+//                    try {
+//
+//                        AmisCrud ac = new AmisCrud();
+//                        ac.supprimer(item.getId(), Sessions.getCurrentSession());
+//
+//                    } catch (SQLException ex) {
+//                        Logger.getLogger(FXMLinvitationAmisController.class.getName()).log(Level.SEVERE, null, ex);
+//                    }
+//
+//                } else {
+//                    System.out.println("User chose Cancel or closed the dialog-box");
+//                }
+//
+//            }
+//        });
+//
+//    }
+//
+//    /*  private void display() {
+//        try {
+//
+//            try {
+//                AdminService lc = new AdminService();
+//
+//            } catch (SQLException ex) {
+//                Logger.getLogger(FXMLadminUserController.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//            ArrayList<User> user = invitationAmis.afficherProfil();
+//
+//            ObservableList<User> obs = FXCollections.observableArrayList(user);
+//
+//            //filter = new FilteredList(obs,e->true);
+//            tableView.setItems(obs);
+//   idd.setCellValueFactory(new PropertyValueFactory<>("id"));
+//            firstname.setCellValueFactory(new PropertyValueFactory<>("firstname"));
+//            lastname.setCellValueFactory(new PropertyValueFactory<>("lastname"));
+//
+//        } catch (SQLException ex) {
+//            Logger.getLogger(FXMLinvitationAmisController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }*/
 
-            ArrayList<User> arrayList = (ArrayList<User>) ps.getAmisU(Sessions.getCurrentSession());
-            System.out.println((ArrayList<User>) ps.getAmisU(Sessions.getCurrentSession()));
-            ObservableList obs = FXCollections.observableArrayList(arrayList);
-            tableView.setItems(obs);
-            firstname.setCellValueFactory(new PropertyValueFactory<>("firstname"));
-            lastname.setCellValueFactory(new PropertyValueFactory<>("lastname"));
-            idd.setCellValueFactory(new PropertyValueFactory<>("id"));
+UserCrud uc = new UserCrud();
+ArrayList<User> list = new ArrayList<>();
+        list=uc.getAmisU(Sessions.getCurrentSession());
+            ObservableList obs = FXCollections.observableArrayList(list);
+                idd.setCellValueFactory(new PropertyValueFactory<>("id"));
+                firstname.setCellValueFactory(new PropertyValueFactory<>("firstname"));
+                lastname.setCellValueFactory(new PropertyValueFactory<>("lastname"));
+                tableView.setItems(obs);
         } catch (SQLException ex) {
             Logger.getLogger(FXMLafficherAmisController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        tableView.setRowFactory(tv -> {
-            TableRow<User> row = new TableRow<>();
-            row.setOnMouseClicked(event -> {
-                if (!row.isEmpty() && event.getButton() == MouseButton.PRIMARY
-                        && event.getClickCount() == 2) {
-
-                    try {
-                        int myIndex = tableView.getSelectionModel().getSelectedIndex();
-                        User clickedRow = tableView.getItems().get(myIndex);
-
-                        printRow(clickedRow);
-                        System.out.println(clickedRow);
-                    } catch (SQLException ex) {
-                        Logger.getLogger(FXMLafficherAmisController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-
-                }
-            });
-            return row;
-        });
-
-        profil.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    profil.getScene().setRoot(FXMLLoader.load(getClass().getResource("../Views/FXMLafficherUser.fxml")));
-
-                } catch (IOException ex) {
-                    Logger.getLogger(FXMLajouterUserController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-            }
-        });
-
-    }
-
-    private void printRow(User item) throws SQLException {
-
-        Connection cnx;
-        cnx = MyDBcon.getInstance().getCon();
-
-        supprimer.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                Alert dialogC = new Alert(Alert.AlertType.CONFIRMATION);
-                dialogC.setTitle("A confirmation dialog-box");
-                dialogC.setHeaderText(null);
-                dialogC.setContentText("Voulez vous vraiment Supprimer cet evenement ?");
-                Optional<ButtonType> answer = dialogC.showAndWait();
-                if (answer.get() == ButtonType.OK) {
-                    try {
-
-                        AmisCrud ac = new AmisCrud();
-                        ac.supprimer(item.getId(), Sessions.getCurrentSession());
-                        display();
-                    } catch (SQLException ex) {
-                        Logger.getLogger(FXMLinvitationAmisController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-
-                } else {
-                    System.out.println("User chose Cancel or closed the dialog-box");
-                }
-
-            }
-        });
-
-    }
-
-    private void display() {
-        try {
-
-            try {
-                AdminService lc = new AdminService();
-
-            } catch (SQLException ex) {
-                Logger.getLogger(FXMLadminUserController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            ArrayList<User> user = invitationAmis.afficherProfil();
-
-            ObservableList<User> obs = FXCollections.observableArrayList(user);
-
-            //filter = new FilteredList(obs,e->true);
-            tableView.setItems(obs);
-
-            firstname.setCellValueFactory(new PropertyValueFactory<>("firstname"));
-            lastname.setCellValueFactory(new PropertyValueFactory<>("lastname"));
-
-        } catch (SQLException ex) {
-            Logger.getLogger(FXMLinvitationAmisController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+        
+       
+}
 }

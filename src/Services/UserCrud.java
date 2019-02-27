@@ -329,23 +329,22 @@ public class UserCrud {
 
     }
 
-    public static void modifierUser(int id, String username, String email,
-            String firstname, String lastname, String nationalite, String langues, String date_naissance, String photo_p, String descriptions, String sexe) {
+    public static void modifierUser(int id, String username, 
+            String firstname, String lastname, String nationalite, String langues, String date_naissance, String descriptions, String sexe,int tel) {
         try {
-            String req = "update user set username=?,email=?,firstname=?,lastname=?,nationalite=?,langues=?,date_naissance=?,photo_p=?,descriptions=?,sexe=? where id=?";
+            String req = "update user set username=?,firstname=?,lastname=?,nationalite=?,langues=?,date_naissance=?,descriptions=?,sexe=?,tel=? where id=?";
             PreparedStatement pstm = cnx.prepareStatement(req);
             pstm.setString(1, username);
-            pstm.setString(2, email);
-
-            pstm.setString(3, firstname);
-            pstm.setString(4, lastname);
-            pstm.setString(5, nationalite);
-            pstm.setString(6, langues);
-            pstm.setString(7, date_naissance);
-            pstm.setString(8, photo_p);
-            pstm.setString(9, descriptions);
-            pstm.setString(10, sexe);
-            pstm.setInt(11, id);
+            pstm.setString(2, firstname);
+            pstm.setString(3, lastname);
+            pstm.setString(4, nationalite);
+            pstm.setString(5, langues);
+            pstm.setString(6, date_naissance);
+           
+            pstm.setString(7, descriptions);
+            pstm.setString(8, sexe);
+            pstm.setInt(9, tel);
+            pstm.setInt(10, id);
 
             pstm.executeUpdate();
         } catch (SQLException ex) {
@@ -491,37 +490,29 @@ public class UserCrud {
         return retour;
     }
 
-    public static ArrayList<User> getAmisU(int id) throws SQLException {
-        PreparedStatement ps = null;
-        ResultSet rs = null;
+    public ArrayList<User> getAmisU(int id) throws SQLException {
+        
+       
         ArrayList<User> retour = new ArrayList<>();
-        Statement stm = cnx.createStatement();
+        
         
         //String req = "select user.firstname,user.lastname from user,amis where (amis.id_ue='"+id+"' or amis.id_ur='"+id+"' and etat_a=1))";
         String req = "select user.id, user.firstname,user.lastname from user,amis where ((user.id!='"+id+"' and amis.id_ur=user.id ) or (user.id!='"+id+"' and amis.id_ue=user.id))";
-        ps = cnx.prepareStatement(req);
+        PreparedStatement ps = cnx.prepareStatement(req);
        
-        rs = ps.executeQuery();
-        while (rs.next()) {
-
-            String firstname = rs.getString("firstname");
-            String lastname = rs.getString("lastname");
-            System.out.println(lastname);
-            int idd = rs.getInt("user.id");
+        ResultSet res=ps.executeQuery(req);
+       
+        while (res.next()) {
+            
+            int idd = res.getInt(1);
+            String firstname = res.getString(2);
+           
+            String lastname = res.getString(3);
+            
             retour.add(new User(idd,firstname, lastname));
-
+           
         }
         
-
-      /*  String query2 = "select user.firstname,user.lastname from user,amis where amis.id_ue=user.id and etat_a=1 and amis.id_ur=?";
-        ps = cnx.prepareStatement(query2);
-        ps.setInt(1, id);
-        rs = ps.executeQuery();
-        while (rs.next()) {
-            String firstname = rs.getString("firstname");
-            String lastname = rs.getString("lastname");
-            retour.add(new User(firstname, lastname));
-        }*/
         return retour;
     }
     
@@ -547,9 +538,8 @@ public class UserCrud {
                     
             return matchingTypes;
         }
-    
-    
-        public static TreeMap<String,Integer> GetNameIdMap() throws SQLException{
+       
+               public static TreeMap<String,Integer> GetNameIdMap() throws SQLException{
 		TreeMap<String,Integer> map = new TreeMap<String,Integer>();
 		Connection con = MyDBcon.getInstance().getCon();
 		String query = "SELECT id,username from user order by id";
@@ -566,5 +556,7 @@ public class UserCrud {
 		}
 		return null;
 	}
-
+    
+    
+    
 }

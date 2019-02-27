@@ -84,16 +84,15 @@ public User( String username, String email, String password,String firstname, St
     this.username = username;
     this.email = email;
     this.password = password;
-   
     this.firstname = firstname;
     this.lastname = lastname;
     this.nationalite = nationalite;
     this.langues = langues;
     this.date_naissance=date_naissance;
-     this.photo_p = photo_p;
-     this.descriptions = descriptions;
-     this.sexe = sexe;
-     this.tel = tel;
+    this.photo_p = photo_p;
+    this.descriptions = descriptions;
+    this.sexe = sexe;
+    this.tel = tel;
      
 
 } 
@@ -108,29 +107,32 @@ public User( int id, String username, String email, Boolean enabled,  String rol
     this.lastname = lastname;
     this.nationalite = nationalite;
     this.langues = langues;
-     this.date_naissance = date_naissance;
-     this.photo_p = photo_p;
-     this.descriptions = descriptions;
+    this.date_naissance = date_naissance;
+    this.photo_p = photo_p;
+    this.descriptions = descriptions;
 
 }  
 
 
         
 
-/*
-public User( String username, String email,  String password, String firstname, String lastname, String nationalite,String langues)
+//modif
+public User( int id,String username, String firstname, String lastname, String nationalite,String langues, String date_naissance, String photo_p, String descriptions,String sexe,int tel)
 {
-   
+    this.id = id;
     this.username = username;
-    this.email = email;
-    
-    this.password = password;
     this.firstname = firstname;
     this.lastname = lastname;
     this.nationalite = nationalite;
     this.langues = langues;
+    this.date_naissance=date_naissance;
+    this.photo_p=photo_p;
+    this.descriptions=descriptions;
+    this.sexe=sexe;
+    this.tel=tel;
+    
 
-}*/
+}
 
 /*public User (String username,String firstname,String lastname,String langue,String date,String descr,String sexe)
 {
@@ -160,7 +162,8 @@ public User( String username, String email,  String password, String firstname, 
 
 } */
 
-    public User(int id, String username, String email, String firstname, String lastname, String nationalite, String langues, String descriptions, String sexe) {
+    public User(int id, String username, String email, String firstname, String lastname, String nationalite, String langues, String descriptions, String sexe) 
+    {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -171,6 +174,7 @@ public User( String username, String email,  String password, String firstname, 
         this.descriptions = descriptions;
         this.sexe = sexe;
     }
+    
 public User(String username, String email, String firstname, String lastname, String nationalite,String langues,String descriptions,String sexe)
 {
    
@@ -413,7 +417,7 @@ public User(String email,String firstname, String lastname, String nationalite,S
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", username=" + username + ", firstname=" + firstname + ", lastname=" + lastname + '}';
+        return "User{" + "id=" + id + " firstname=" + firstname + ", lastname=" + lastname + '}';
     }
 
 }

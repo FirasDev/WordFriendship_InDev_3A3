@@ -32,6 +32,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -80,8 +81,7 @@ public class FXMLafficherUserController implements Initializable {
     private Button invit;
     @FXML
     private ImageView imageView;
-    private Image image;
-    private File file;  
+     
     @FXML
     private Button liste;
     @FXML
@@ -124,13 +124,15 @@ public class FXMLafficherUserController implements Initializable {
                      sexe.setText(rs.getString("sexe"));
                      tel.setText(String.valueOf(rs.getInt("tel"))); 
                      grade.setText(rs.getString("grade"));
-                     
- 
+                      
+                     getImg(email.getText());
                  }
         }
         
         catch(SQLException ex){
             
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLafficherUserController.class.getName()).log(Level.SEVERE, null, ex);
         }
          /* try {
                     OutputStream os= new FileOutputStream(new File(photo_p.getText()));
@@ -240,5 +242,22 @@ imageView.setImage(image); */
                     Logger.getLogger(FXMLajouterUserController.class.getName()).log(Level.SEVERE, null, ex);
                 }
     }*/
+    
+    public void getImg(String idd) throws SQLException, IOException {
+        Connection cnx = MyDBcon.getInstance().getCon();
+
+        String q = "SELECT `photo_p` FROM `user` WHERE email='"+idd+"'";
+
+        Statement stm = cnx.createStatement();
+        ResultSet rs = stm.executeQuery(q);
+
+        if (rs.next()) {
+           
+            String imagePath = "file:/" + rs.getString("photo_p");
+            Image im = new Image(imagePath);
+            System.out.println(im);
+            imageView.setImage(im);
+        }
+    }
     
 }

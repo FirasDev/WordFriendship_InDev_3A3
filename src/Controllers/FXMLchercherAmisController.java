@@ -91,8 +91,9 @@ public class FXMLchercherAmisController implements Initializable {
     @FXML
     private JFXTextField recherche;
     @FXML
-    private Button logout; 
-   
+    private Button logout;  
+    @FXML
+    private Button profil;
     
 
     /**
@@ -103,6 +104,19 @@ public class FXMLchercherAmisController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
+         profil.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    profil.getScene().setRoot(FXMLLoader.load(getClass().getResource("../Views/FXMLmenue.fxml")));
+
+                } catch (IOException ex) {
+                    Logger.getLogger(FXMLajouterUserController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            }
+        });
         logout.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
